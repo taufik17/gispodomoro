@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title><?php echo $title ?></title>
+  <title><?= $title ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- Font Awesome -->
@@ -45,11 +45,14 @@
           <img src="<?= base_url(); ?>assets/dist/img/avatar.png" class="img-circle" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Admin</a>
+          <?php foreach ($data->result() as $i ) {
+          ?>
+          <a href="#" class="d-block"><?= $i->username ?></a>
+          <?php }?>
         </div>
       </div>
-			<li class="nav-item dropdown">
-        <a class="nav-link" data-toggle="dropdown" href="#">
+			<li class="nav-item">
+        <a class="nav-link" href="<?= base_url(); ?>dashboard_admin/logout">
 					<i class="fas fa-sign-out-alt"></i>
         </a>
       </li>
@@ -68,10 +71,11 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark">Dashboard</h1>
+            <h1 class="m-0 text-dark"><?= $judul ?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
+
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -80,87 +84,7 @@
     <!-- /.content-header -->
 
     <!-- Main content -->
-    <section class="content">
-      <div class="container-fluid">
-        <!-- Small boxes (Stat box) -->
-        <div class="row">
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-info">
-              <div class="inner">
-                <h3>150</h3>
-
-                <p>Sekolah</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-school"></i>
-              </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-success">
-              <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
-
-                <p>Tempat Peribadatan</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-mosque"></i>
-              </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-warning">
-              <div class="inner">
-                <h3>44</h3>
-
-                <p>PT / Home Industri</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-industry"></i>
-              </div>
-              <a href="#" class="small-box-footer">Selengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-          <div class="col-lg-3 col-6">
-            <!-- small box -->
-            <div class="small-box bg-danger">
-              <div class="inner">
-                <h3>65</h3>
-
-                <p>Bangunan Aset Desa</p>
-              </div>
-              <div class="icon">
-                <i class="fas fa-building"></i>
-              </div>
-              <a href="#" class="small-box-footer">Lengkapnya <i class="fas fa-arrow-circle-right"></i></a>
-            </div>
-          </div>
-          <!-- ./col -->
-        </div>
-        <!-- /.row -->
-        <!-- Main row -->
-        <div class="row">
-          <!-- Left col -->
-          <section class="col-lg-12 connectedSortable">
-						<div class="alert alert-info alert-dismissible">
-                  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                  <h5><i class="icon fas fa-info"></i> Info!</h5>
-                  Web ini adalah web sistem informasi geografis pekon Podomoro.
-                </div>
-          </section>
-          <!-- /.Left col -->
-        </div>
-        <!-- /.row (main row) -->
-      </div><!-- /.container-fluid -->
-    </section>
+    <?php $this->load->view($konten); ?>
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->

@@ -27,7 +27,7 @@ class Login extends CI_Controller {
 		$data['title'] = "MtaGeo | Masuk";
 		if(!empty($username))
 		{
-			redirect('Beranda_admin');
+			redirect('dashboard_admin');
 		}
 		else {
 			$this->load->view('tampilan_login', $data);

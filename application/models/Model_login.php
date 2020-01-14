@@ -15,7 +15,7 @@ class Model_login extends CI_model {
 				$sess = array('username'	=> $row->username,
 							  'password'	=> $row->password);
 				$this->session->set_userdata($sess);
-				redirect('Beranda_admin');
+				redirect('dashboard_admin');
 			}
 		}
 		else
