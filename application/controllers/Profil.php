@@ -6,6 +6,7 @@ class Profil extends CI_Controller {
 	{
 		$this->Model_keamanan->getkeamanan();
 		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['pendidikan'] = $this->Model_data->datapendidikan();
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "konten_profil";
 		$isi['title'] = "Profil | Pekon Podomoro";

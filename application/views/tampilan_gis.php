@@ -6,6 +6,8 @@
   <title><?= $title ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- dropify -->
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/dropify/dropify.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -14,8 +16,6 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
-  <!-- JQVMap -->
-  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/jqvmap/jqvmap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/adminlte.min.css">
   <!-- overlayScrollbars -->
@@ -133,7 +133,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo date("Y");?> <a href="https://taufik17.github.io/">TaufikSan</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; <?php echo date("Y");?> <a href="https://taufik17.github.io/" target="_blank">TaufikSan</a>.</strong> All rights reserved.
 
 		<div class="float-right d-none d-sm-inline-block">
 			<div class="user-panel d-flex">
@@ -155,12 +155,58 @@
   <!-- /.control-sidebar -->
 </div>
 <!-- ./wrapper -->
+<!-- jQuery -->
+<script src="<?= base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="<?= base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+  $.widget.bridge('uibutton', $.ui.button)
+</script>
+<!-- Bootstrap 4 -->
+<script src="<?= base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- ChartJS -->
+<script src="<?= base_url(); ?>assets/plugins/chart.js/Chart.min.js"></script>
+<!-- Sparkline -->
+<script src="<?= base_url(); ?>assets/plugins/sparklines/sparkline.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="<?= base_url(); ?>assets/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="<?= base_url(); ?>assets/plugins/moment/moment.min.js"></script>
+<script src="<?= base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="<?= base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Summernote -->
+<script src="<?= base_url(); ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
+<!-- overlayScrollbars -->
+<script src="<?= base_url(); ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+<!-- AdminLTE App -->
+<script src="<?= base_url(); ?>assets/dist/js/adminlte.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="<?= base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
+<script src="<?php echo base_url() ?>assets/dropify/dropify.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.dropify').dropify({
+			messages: {
+                default: 'Drag atau drop untuk memilih file',
+                replace: 'Ganti',
+                remove:  'Hapus',
+                error:   'error'
+            }
+		});
+	});
+
+</script>
 
 <!-- maps -->
 <script>
   var map = L.map('map').setView([-5.3480498,104.9833499], 13);
   var layer = L.esri.basemapLayer('Imagery').addTo(map);
   var layerLabels;
+  var base_url="<?= base_url() ?>";
 
   function setBasemap (basemap) {
     if (layer) {
@@ -214,43 +260,39 @@
       ]
     }).addTo(map);
 
+    var myFeatureGroup = L.featureGroup().addTo(map).on("click", groupClick);
+    var bangunanMarker;
+
+    $.getJSON(base_url+"gis/sekolah_tpa_json", function(data){
+      $.each(data, function(i, field){
+
+        var v_lat=parseFloat(data[i].latitude);
+        var v_long=parseFloat(data[i].longtitude);
+
+        var icon_sekolah_tpa = L.icon({
+          iconUrl: base_url+'assets/marker/sd_tpa.png',
+          iconSize: [30, 30]
+        });
+
+        bangunanMarker = L.marker([v_lat, v_long],{icon:icon_sekolah_tpa})
+          .addTo(myFeatureGroup)
+          .bindPopup(data[i].nama_sekolah);
+
+          bangunanMarker.id = data[i].id_sekolah;
+
+        // bangunanMarker = L.marker([v_lat, v_long],{icon:icon_sekolah_tpa}).addTo(map)
+        // .bindPopup(data[i].nama_sekolah)
+        // .openPopup();
+      });
+    });
+
+    function groupClick(event){
+      console.log("clicked on marker" + event.layer.id);
+    }
+
 </script>
 
 <!-- end maps -->
 
-<!-- jQuery -->
-<script src="<?= base_url(); ?>assets/plugins/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<script src="<?= base_url(); ?>assets/plugins/jquery-ui/jquery-ui.min.js"></script>
-<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-<script>
-  $.widget.bridge('uibutton', $.ui.button)
-</script>
-<!-- Bootstrap 4 -->
-<script src="<?= base_url(); ?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- ChartJS -->
-<script src="<?= base_url(); ?>assets/plugins/chart.js/Chart.min.js"></script>
-<!-- Sparkline -->
-<script src="<?= base_url(); ?>assets/plugins/sparklines/sparkline.js"></script>
-<!-- JQVMap -->
-<script src="<?= base_url(); ?>assets/plugins/jqvmap/jquery.vmap.min.js"></script>
-<script src="<?= base_url(); ?>assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="<?= base_url(); ?>assets/plugins/jquery-knob/jquery.knob.min.js"></script>
-<!-- daterangepicker -->
-<script src="<?= base_url(); ?>assets/plugins/moment/moment.min.js"></script>
-<script src="<?= base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- Tempusdominus Bootstrap 4 -->
-<script src="<?= base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
-<!-- Summernote -->
-<script src="<?= base_url(); ?>assets/plugins/summernote/summernote-bs4.min.js"></script>
-<!-- overlayScrollbars -->
-<script src="<?= base_url(); ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
-<!-- AdminLTE App -->
-<script src="<?= base_url(); ?>assets/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?= base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
 </body>
 </html>

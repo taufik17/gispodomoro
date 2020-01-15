@@ -6,6 +6,8 @@
   <title><?= $title ?></title>
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- dropify -->
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/dropify/dropify.min.css">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/fontawesome-free/css/all.min.css">
   <!-- Ionicons -->
@@ -90,7 +92,7 @@
   </div>
   <!-- /.content-wrapper -->
   <footer class="main-footer">
-    <strong>Copyright &copy; <?php echo date("Y");?> <a href="https://taufik17.github.io/">TaufikSan</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; <?php echo date("Y");?> <a href="https://taufik17.github.io/" target="_blank">TaufikSan</a>.</strong> All rights reserved.
 
 		<div class="float-right d-none d-sm-inline-block">
 			<div class="user-panel d-flex">
@@ -146,5 +148,19 @@
 <script src="<?= base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
+<script src="<?php echo base_url() ?>assets/dropify/dropify.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.dropify').dropify({
+			messages: {
+                default: 'Drag atau drop untuk memilih file',
+                replace: 'Ganti',
+                remove:  'Hapus',
+                error:   'error'
+            }
+		});
+	});
+
+</script>
 </body>
 </html>

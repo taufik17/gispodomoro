@@ -2,7 +2,6 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-md-3">
-
 				<?php foreach ($data->result() as $i ) {
 				?>
 				<!-- Profile Image -->
@@ -29,7 +28,7 @@
 					<div class="card-body">
 						<strong><i class="fas fa-book mr-1"></i> Pendidikan</strong>
 						<p class="text-muted">
-							disini pendidikan
+							<?= $i->nama_pendidikan ?>
 						</p>
 						<hr>
 						<strong><i class="fas fa-map-marker-alt mr-1"></i> Alamat</strong>
@@ -49,156 +48,227 @@
 				<div class="card">
 					<div class="card-header p-2">
 						<ul class="nav nav-pills">
-							<li class="nav-item"><a class="nav-link active" href="#timeline" data-toggle="tab">Data Diri</a></li>
+							<li class="nav-item"><a class="nav-link active" href="#data_diri" data-toggle="tab">Data Diri</a></li>
 							<li class="nav-item"><a class="nav-link" href="#settings" data-toggle="tab">Settings</a></li>
+							<li class="nav-item"><a class="nav-link" href="#ubah_pass" data-toggle="tab">Ubah Password</a></li>
 						</ul>
 					</div><!-- /.card-header -->
+
 					<div class="card-body">
 						<div class="tab-content">
-							<div class="active tab-pane" id="timeline">
-								<!-- The timeline -->
-								<div class="timeline timeline-inverse">
-									<!-- timeline time label -->
-									<div class="time-label">
-										<span class="bg-danger">
-											10 Feb. 2014
-										</span>
-									</div>
-									<!-- /.timeline-label -->
-									<!-- timeline item -->
-									<div>
-										<i class="fas fa-envelope bg-primary"></i>
-
-										<div class="timeline-item">
-											<span class="time"><i class="far fa-clock"></i> 12:05</span>
-
-											<h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
-
-											<div class="timeline-body">
-												Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-												weebly ning heekya handango imeem plugg dopplr jibjab, movity
-												jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-												quora plaxo ideeli hulu weebly balihoo...
-											</div>
-											<div class="timeline-footer">
-												<a href="#" class="btn btn-primary btn-sm">Read more</a>
-												<a href="#" class="btn btn-danger btn-sm">Delete</a>
-											</div>
-										</div>
-									</div>
-									<!-- END timeline item -->
-									<!-- timeline item -->
-									<div>
-										<i class="fas fa-user bg-info"></i>
-
-										<div class="timeline-item">
-											<span class="time"><i class="far fa-clock"></i> 5 mins ago</span>
-
-											<h3 class="timeline-header border-0"><a href="#">Sarah Young</a> accepted your friend request
-											</h3>
-										</div>
-									</div>
-									<!-- END timeline item -->
-									<!-- timeline item -->
-									<div>
-										<i class="fas fa-comments bg-warning"></i>
-
-										<div class="timeline-item">
-											<span class="time"><i class="far fa-clock"></i> 27 mins ago</span>
-
-											<h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-											<div class="timeline-body">
-												Take me to your leader!
-												Switzerland is small and neutral!
-												We are more like Germany, ambitious and misunderstood!
-											</div>
-											<div class="timeline-footer">
-												<a href="#" class="btn btn-warning btn-flat btn-sm">View comment</a>
-											</div>
-										</div>
-									</div>
-									<!-- END timeline item -->
-									<!-- timeline time label -->
-									<div class="time-label">
-										<span class="bg-success">
-											3 Jan. 2014
-										</span>
-									</div>
-									<!-- /.timeline-label -->
-									<!-- timeline item -->
-									<div>
-										<i class="fas fa-camera bg-purple"></i>
-
-										<div class="timeline-item">
-											<span class="time"><i class="far fa-clock"></i> 2 days ago</span>
-
-											<h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-											<div class="timeline-body">
-												<img src="http://placehold.it/150x100" alt="...">
-												<img src="http://placehold.it/150x100" alt="...">
-												<img src="http://placehold.it/150x100" alt="...">
-												<img src="http://placehold.it/150x100" alt="...">
-											</div>
-										</div>
-									</div>
-									<!-- END timeline item -->
-									<div>
-										<i class="far fa-clock bg-gray"></i>
-									</div>
-								</div>
+							<?php foreach ($data->result() as $i ) {
+							?>
+							<div class="active tab-pane" id="data_diri">
+								<table width="100%" class="table table-striped table-bordered table-hover dataTable" id="dataTables-example">
+									<tbody>
+										<tr>
+											<td align="left" width="26%"><b>Username</b></td>
+											<td><?= $i->username ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Nama Lengkap</b></td>
+											<td><?= $i->nama ?></td>
+										</tr>
+										<tr><td align="left"><b>Pendidikan</b></td>
+											<td><?= $i->nama_pendidikan ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Jenis Kelamin</b></td>
+											<td><?= $i->jk ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Email</b></td>
+											<td><?= $i->email ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Nomor Telepon</b></td>
+											<td><?= $i->no_telp ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Alamat</b></td>
+											<td><?= $i->alamat ?></td>
+										</tr>
+										<tr>
+											<td align="left"><b>Jabatan</b></td>
+											<td><?= $i->role ?></td>
+										</tr>
+									</tbody>
+								</table>
 							</div>
 							<!-- /.tab-pane -->
 
 							<div class="tab-pane" id="settings">
 								<form class="form-horizontal">
+
 									<div class="form-group row">
-										<label for="inputName" class="col-sm-2 col-form-label">Name</label>
+										<label for="inputName" class="col-sm-2 col-form-label">Username</label>
 										<div class="col-sm-10">
-											<input type="email" class="form-control" id="inputName" placeholder="Name">
+											<input type="text" class="form-control" name="username" value="<?= $i->username ?>" readonly required>
 										</div>
 									</div>
+									<div class="form-group row">
+										<label for="inputName2" class="col-sm-2 col-form-label">Nama Lengkap</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name="nama_lengkap" placeholder="Nama Lengkap" value="<?= $i->nama ?>" required>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="inputExperience" class="col-sm-2 col-form-label">Pendidikan</label>
+										<div class="col-sm-10">
+											<select class="form-control select2 select2-hidden-accessible" name="pendidikan" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
+												<option selected="selected"><?= $i->nama_pendidikan ?></option>
+												<?php
+												foreach ($pendidikan->result() as $row ) {
+												?>
+												<option value="<?php echo $row->id_pendidikan; ?>" ><?php echo $row->nama_pendidikan; ?></option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+
+									<div class="form-group row">
+										<label for="inputExperience" class="col-sm-2 col-form-label">Jenis Kelamin</label>
+										<div class="col-sm-10">
+		                    <!-- radio -->
+												<?php
+												if ($i->jk == 'Laki - laki') { ?>
+													<div class="icheck-primary d-inline">
+														<input type="radio" id="radioPrimary1" name="jk" value="Laki - laki" checked>
+														<label for="radioPrimary1">
+															Laki - Laki
+														</label>
+													</div>
+													&nbsp
+													<div class="icheck-primary d-inline">
+														<input type="radio"id="radioPrimary2" name="jk" value="Perempuan">
+														<label for="radioPrimary2">
+															Perempuan
+														</label>
+													</div>
+												<?php } else { ?>
+													<div class="icheck-primary d-inline">
+														<input type="radio" id="radioPrimary1" name="jk" value="Laki - laki">
+														<label for="radioPrimary1">
+															Laki - Laki
+														</label>
+													</div>
+													&nbsp
+													<div class="icheck-primary d-inline">
+														<input type="radio" id="radioPrimary2" name="jk" value="Perempuan" checked>
+														<label for="radioPrimary2">
+															Perempuan
+														</label>
+													</div>
+												<?php } ?>
+
+										</div>
+									</div>
+
 									<div class="form-group row">
 										<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 										<div class="col-sm-10">
-											<input type="email" class="form-control" id="inputEmail" placeholder="Email">
+											<input type="email" class="form-control" id="inputEmail" placeholder="Email" value="<?= $i->email ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
-										<label for="inputName2" class="col-sm-2 col-form-label">Name</label>
+										<label for="inputEmail" class="col-sm-2 col-form-label">No Telpon</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" id="inputName2" placeholder="Name">
+											<input type="text" class="form-control" placeholder="Nomor Telpon" value="<?= $i->no_telp ?>">
 										</div>
 									</div>
+
 									<div class="form-group row">
-										<label for="inputExperience" class="col-sm-2 col-form-label">Experience</label>
+										<label for="inputSkills" class="col-sm-2 col-form-label">Alamat</label>
 										<div class="col-sm-10">
-											<textarea class="form-control" id="inputExperience" placeholder="Experience"></textarea>
-										</div>
+                      <textarea class="form-control" id="inputExperience" placeholder="Alamat"><?= $i->alamat ?></textarea>
+                    </div>
 									</div>
+
 									<div class="form-group row">
-										<label for="inputSkills" class="col-sm-2 col-form-label">Skills</label>
+										<label for="inputEmail" class="col-sm-2 col-form-label">Jabatan</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" id="inputSkills" placeholder="Skills">
+											<input type="text" class="form-control" placeholder="Jabatan" value="<?= $i->role ?>">
 										</div>
 									</div>
+
+									<div class="form-group row">
+											<label for="exampleInputFile" class="col-sm-2 control-label">Foto Profil</label>
+											<div class="col-sm-10">
+												<input type="file" name="filefoto" class="dropify" data-height="200">
+												<p class="help-block">File Max 2 Mb</p>
+											</div>
+									</div>
+
 									<div class="form-group row">
 										<div class="offset-sm-2 col-sm-10">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox"> I agree to the <a href="#">terms and conditions</a>
+													<input type="checkbox"> Data yang diinputkan adalah data yang benar
 												</label>
 											</div>
 										</div>
 									</div>
 									<div class="form-group row">
 										<div class="offset-sm-2 col-sm-10">
-											<button type="submit" class="btn btn-danger">Submit</button>
+											<button type="submit" class="btn btn-danger">
+												<i class="fas fa-save">&nbsp</i>Simpan</button>
 										</div>
 									</div>
 								</form>
 							</div>
+
+							<div class="tab-pane" id="ubah_pass">
+								<form class="form-horizontal">
+
+									<div class="form-group row">
+										<label for="inputName" class="col-sm-2 col-form-label">Username</label>
+										<div class="col-sm-10">
+											<input type="text" class="form-control" name="username" value="<?= $i->username ?>" readonly required>
+										</div>
+									</div>
+									<div class="form-group row">
+										<label for="inputName2" class="col-sm-2 col-form-label">Password Lama</label>
+										<div class="col-sm-10">
+											<input type="password" class="form-control" name="old_pass" placeholder="Password Lama" required>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="inputName2" class="col-sm-2 col-form-label">Password Baru</label>
+										<div class="col-sm-10">
+											<input type="password" class="form-control" name="new_pass" placeholder="Password Baru" required>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label for="inputName2" class="col-sm-2 col-form-label">Konfirmasi Password</label>
+										<div class="col-sm-10">
+											<input type="password" class="form-control" name="conf_pass" placeholder="Konfirmasi Password" required>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<div class="offset-sm-2 col-sm-10">
+											<div class="checkbox">
+												<label>
+													<input type="checkbox"> Data yang diinputkan adalah data yang benar
+												</label>
+											</div>
+										</div>
+									</div>
+									<div class="form-group row">
+										<div class="offset-sm-2 col-sm-10">
+											<button type="submit" class="btn btn-danger">
+												<i class="fas fa-save">&nbsp</i>Simpan</button>
+										</div>
+									</div>
+								</form>
+							</div>
+
+							<?php } ?>
 							<!-- /.tab-pane -->
 						</div>
 						<!-- /.tab-content -->
