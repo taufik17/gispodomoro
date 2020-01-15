@@ -8,6 +8,8 @@ class Dokumentasi extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "konten_dokumentasi";
+		$isi['breadcrumb0'] = "Dokumentasi";
+		$isi['breadcrumb'] = "";
 		$isi['title'] = "Dokumentasi | Pekon Podomoro";
 		$isi['judul'] = "Dokumentasi";
 		$this->load->view('tampilan_dashboard_admin', $isi);

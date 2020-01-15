@@ -14,6 +14,8 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/dist/css/ionicons.min.css">
   <!-- Tempusdominus Bbootstrap 4 -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+  <!-- DataTables -->
+  <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/datatables-bs4/css/dataTables.bootstrap4.css">
   <!-- iCheck -->
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- JQVMap -->
@@ -78,7 +80,8 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-
+              <li class="breadcrumb-item"><?= $breadcrumb0 ?></li>
+              <li class="breadcrumb-item active"><?= $breadcrumb ?></li>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
@@ -133,6 +136,9 @@
 <script src="<?= base_url(); ?>assets/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
 <!-- jQuery Knob Chart -->
 <script src="<?= base_url(); ?>assets/plugins/jquery-knob/jquery.knob.min.js"></script>
+<!-- DataTables -->
+<script src="<?= base_url(); ?>assets/plugins/datatables/jquery.dataTables.js"></script>
+<script src="<?= base_url(); ?>assets/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
 <!-- daterangepicker -->
 <script src="<?= base_url(); ?>assets/plugins/moment/moment.min.js"></script>
 <script src="<?= base_url(); ?>assets/plugins/daterangepicker/daterangepicker.js"></script>
@@ -162,5 +168,58 @@
 	});
 
 </script>
+
+<script>
+  $(function () {
+    $("#example1").DataTable();
+    $("#sekolah").DataTable();
+    $("#ibadah").DataTable();
+    $("#pt").DataTable();
+    $("#asetpekon").DataTable();
+    $('#example2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false,
+    });
+  });
+</script>
+
+<script>
+  $(function () {
+    var donutData = {
+      labels: [
+          'Bangunan Aset Desa',
+          'Tempat Peribadatan',
+          'PT & Home Industri',
+          'Sekolah & TPA',
+
+      ],
+      datasets: [
+        {
+          data: [<?= $jumlah_aset_desa; ?>,<?= $jumlah_ibadah; ?>,<?= $jumlah_pt; ?>,<?= $jumlah_sekolah; ?>],
+          backgroundColor : ['#f56954', '#00a65a', '#f39c12', '#00c0ef', '#3c8dbc', '#d2d6de'],
+        }
+      ]
+    }
+
+    var pieChartCanvas = $('#pieChart').get(0).getContext('2d')
+    var pieData        = donutData;
+    var pieOptions     = {
+      maintainAspectRatio : false,
+      responsive : true,
+    }
+
+    var pieChart = new Chart(pieChartCanvas, {
+      type: 'pie',
+      data: pieData,
+      options: pieOptions
+    })
+
+  })
+</script>
+
 </body>
 </html>

@@ -1,21 +1,17 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Gis extends CI_Controller {
+class Gis_sekolah_tpa extends CI_Controller {
 
-	public function __construct()
-	{
-		parent::__construct();
-	}
-	
 	public function index()
 	{
 		$this->Model_keamanan->getkeamanan();
 		$isi['data']		= $this->Model_data->dataadmin();
 		$isi['menu'] = "menu_admin";
-		$isi['konten'] = "konten_gis";
-		$isi['title'] = "GIS | Pekon Podomoro";
-		$isi['judul'] = "GIS";
+		$isi['konten'] = "konten_gis_sekolah_tpa";
+		$isi['breadcrumb'] = "Sekolah & TPA";
+		$isi['title'] = "GIS Sekolah & TPA | Pekon Podomoro";
+		$isi['judul'] = "GIS Sekolah & TPA";
 		$this->load->view('tampilan_gis', $isi);
 	}
 

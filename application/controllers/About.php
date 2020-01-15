@@ -8,6 +8,8 @@ class About extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "konten_about";
+		$isi['breadcrumb0'] = "About";
+		$isi['breadcrumb'] = "";
 		$isi['title'] = "About | Pekon Podomoro";
 		$isi['judul'] = "About";
 		$this->load->view('tampilan_dashboard_admin', $isi);

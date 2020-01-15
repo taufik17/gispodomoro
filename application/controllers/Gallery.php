@@ -8,6 +8,8 @@ class Gallery extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "konten_galeri";
+		$isi['breadcrumb0'] = "Galeri";
+		$isi['breadcrumb'] = "";
 		$isi['title'] = "Galeri | Pekon Podomoro";
 		$isi['judul'] = "Galeri";
 		$this->load->view('tampilan_dashboard_admin', $isi);

@@ -9,6 +9,8 @@ class Profil extends CI_Controller {
 		$isi['pendidikan'] = $this->Model_data->datapendidikan();
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "konten_profil";
+		$isi['breadcrumb0'] = "Profil";
+		$isi['breadcrumb'] = "";
 		$isi['title'] = "Profil | Pekon Podomoro";
 		$isi['judul'] = "Profil";
 		$this->load->view('tampilan_dashboard_admin', $isi);
