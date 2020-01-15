@@ -4,6 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Dashboard_admin extends CI_Controller {
 	public function index()
 	{
+		$this->Model_keamanan->getkeamanan();
 		$isi['data']		= $this->Model_data->dataadmin();
 		$isi['menu'] = "menu_admin";
 		$isi['title'] = "Dashboard Admin | Pekon Podomoro";

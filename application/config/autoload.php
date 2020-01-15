@@ -6,4 +6,4 @@ $autoload['drivers'] = array('cache');
 $autoload['helper'] = array('url','form','email','captcha');
 $autoload['config'] = array();
 $autoload['language'] = array();
-$autoload['model'] = array('Model_login','Model_data');
+$autoload['model'] = array('Model_login','Model_data', 'Model_keamanan');

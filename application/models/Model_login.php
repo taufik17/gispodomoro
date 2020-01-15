@@ -13,6 +13,7 @@ class Model_login extends CI_model {
 			foreach ($query->result() as $row)
 			{
 				$sess = array('username'	=> $row->username,
+								'id_akun'		=>$row->id_akun,
 							  'password'	=> $row->password);
 				$this->session->set_userdata($sess);
 				redirect('dashboard_admin');
