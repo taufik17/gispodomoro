@@ -16,4 +16,24 @@ class Manajemen_tempat_ibadah extends CI_Controller {
 		$isi['daftar_ibadah'] = $this->Model_data->daftar_ibadah();
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function tambah()
+	{
+		echo "tambah";
+	}
+
+	public function lihat()
+	{
+		echo "lihat";
+	}
+
+	public function edit()
+	{
+		echo "edit";
+	}
+
+	public function hapus()
+	{
+		echo "hapus";
+	}
 }

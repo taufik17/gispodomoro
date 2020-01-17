@@ -16,4 +16,24 @@ class Manajemen_aset_pekon extends CI_Controller {
 		$isi['daftar_aset_pekon'] = $this->Model_data->daftar_aset_pekon();
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function tambah()
+	{
+		echo "tambah";
+	}
+
+	public function lihat()
+	{
+		echo "lihat";
+	}
+
+	public function edit()
+	{
+		echo "edit";
+	}
+
+	public function hapus()
+	{
+		echo "hapus";
+	}
 }

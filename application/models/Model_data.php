@@ -63,4 +63,11 @@ class Model_data extends CI_model {
 		$data = $this->db->query("SELECT * FROM aset_desa");
 		return $data;
 	}
+
+	public function simpan_sekolah_tpa($author,$latitude,$longtitude,$status_sekolah,$kepsek,$nama,$data,$no_telp)
+	{
+		$hasil = $this->db->query("INSERT INTO `sekolah_tpa` (`id_sekolah`, `nama_sekolah`, `kepala_sekolah`, `latitude`, `longtitude`, `status`, `no_telp`, `foto`, `author`)
+															 VALUES (NULL, '$nama', '$kepsek', '$latitude', '$longtitude', '$status_sekolah', '$no_telp', '$data', '$author')");
+		return $hasil;
+	}
 }

@@ -16,4 +16,24 @@ class Manajemen_pt extends CI_Controller {
 		$isi['daftar_pt'] = $this->Model_data->daftar_pt();
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function tambah()
+	{
+		echo "tambah";
+	}
+
+	public function lihat()
+	{
+		echo "lihat";
+	}
+
+	public function edit()
+	{
+		echo "edit";
+	}
+
+	public function hapus()
+	{
+		echo "hapus";
+	}
 }

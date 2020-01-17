@@ -75,8 +75,6 @@ $.widget.bridge('uibutton', $.ui.button)
 <script src="<?= base_url(); ?>assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
 <!-- AdminLTE App -->
 <script src="<?= base_url(); ?>assets/dist/js/adminlte.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="<?= base_url(); ?>assets/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="<?= base_url(); ?>assets/dist/js/demo.js"></script>
 <script src="<?php echo base_url() ?>assets/dropify/dropify.min.js"></script>
@@ -96,7 +94,7 @@ $(document).ready(function(){
 
 <!-- maps -->
 <script>
-var map = L.map('map').setView([-5.3480498,104.9833499], 13);
+var map = L.map('map').setView([-5.344002, 104.996702], 15);
 var layer = L.esri.basemapLayer('Imagery').addTo(map);
 var layerLabels;
 var base_url="<?= base_url() ?>";
@@ -177,6 +175,22 @@ document
 	function groupClick(event){
 		console.log("clicked on marker" + event.layer.id);
 	}
+
+	$.getJSON(base_url+"assets/map.geojson", function(data){
+		geoLayer = L.geoJson(data, {
+			style: function(feature) {
+				return {
+					fillOpacity: 0.0,
+					weight: 2,
+					opacity: 1,
+					color: 'red',
+				};
+			},
+			onEachFeature: function(feature, layer){
+				var latt = parseFloat(feature.properties.latitude);
+			}
+		}).addTo(map);
+	});
 
 </script>
 
