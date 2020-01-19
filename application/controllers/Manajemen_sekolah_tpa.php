@@ -43,7 +43,10 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 
 	public function hapus()
 	{
-		echo "hapus";
+		$id_sekolah = $this->uri->segment(3);
+		$this->Model_data->hapus_sekolah($id_sekolah);
+		$this->session->set_flashdata('sukses','Data Berhasil dihapus');
+		redirect(base_url('manajemen_sekolah_tpa'));
 	}
 
 	public function simpan() {

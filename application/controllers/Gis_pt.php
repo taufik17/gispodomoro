@@ -14,4 +14,10 @@ class Gis_pt extends CI_Controller {
 		$isi['judul'] = "GIS PT & Home Industri";
 		$this->load->view('tampilan_gis', $isi);
 	}
+
+	public function pt_json()
+	{
+		$data = $this->db->get('pt_home_industri')->result();
+		echo json_encode($data);
+	}
 }

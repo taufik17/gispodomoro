@@ -70,7 +70,6 @@
 						<div class="card card-info">
 							<div class="card-header">
 								<h3 class="card-title">Grafik Data</h3>
-
 								<div class="card-tools">
 									<button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i>
 									</button>
@@ -79,6 +78,9 @@
 							</div>
 							<div class="card-body">
 								<canvas id="pieChart" style="min-height: 250px; height: 250px; max-height: 250px; max-width: 100%;"></canvas>
+								<h5>Jumlah Data Keseluruhan : </h5>
+								<p><?php $jumlah = $jumlah_sekolah + $jumlah_ibadah + $jumlah_pt + $jumlah_aset_desa ?>
+								<?= $jumlah; ?> Data</p>
 							</div>
 							<!-- /.card-body -->
 						</div>

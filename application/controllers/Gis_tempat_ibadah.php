@@ -14,4 +14,10 @@ class Gis_tempat_ibadah extends CI_Controller {
 		$isi['judul'] = "GIS Tempat Ibadah";
 		$this->load->view('tampilan_gis', $isi);
 	}
+
+	public function ibadah_json()
+	{
+		$data = $this->db->get('ibadah')->result();
+		echo json_encode($data);
+	}
 }

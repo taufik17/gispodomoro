@@ -15,9 +15,9 @@ class Gis_aset_pekon extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
-	public function sekolah_tpa_json()
+	public function aset_json()
 	{
-		$data = $this->db->get('sekolah_tpa')->result();
+		$data = $this->db->get('aset_desa')->result();
 		echo json_encode($data);
 	}
 }

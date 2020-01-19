@@ -167,7 +167,9 @@ document
 
 			bangunanMarker = L.marker([v_lat, v_long],{icon:icon_sekolah_tpa})
 				.addTo(myFeatureGroup)
-				.bindPopup(data[i].nama_sekolah);
+				.bindPopup("<h6 style='text-align: center'>" + data[i].nama_sekolah + "</h6>"
+				+ "<a href='<?= base_url() ?>gis_sekolah_tpa/detail/"+data[i].id_sekolah+"'> <img src='<?= base_url() ?>assets/foto_sekolah_tpa/"+data[i].foto+"' height='180px' width='230px'/></a>"
+				+ "<div style='width:100%; text-align:center; margin-top:10px;'><a href='<?= base_url() ?>gis_sekolah_tpa/detail/"+data[i].id_sekolah+"'> DETAIL </a></div>")
 				bangunanMarker.id = data[i].id_sekolah;
 		});
 	});

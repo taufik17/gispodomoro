@@ -70,4 +70,49 @@ class Model_data extends CI_model {
 															 VALUES (NULL, '$nama', '$kepsek', '$latitude', '$longtitude', '$status_sekolah', '$no_telp', '$data', '$author')");
 		return $hasil;
 	}
+
+	public function simpan_ibadah($author,$latitude,$longtitude,$ketua,$nama,$data)
+	{
+		$hasil = $this->db->query("INSERT INTO `ibadah` (`id_ibadah`, `nama_bangunan`, `ketua`, `latitude`, `longtitude`, `foto`, `author`)
+		VALUES (NULL, '$nama', '$ketua', '$latitude', '$longtitude', '$data', '$author')");
+		return $hasil;
+	}
+
+	public function simpan_pt($author,$latitude,$longtitude,$pemilik,$nama,$data)
+	{
+		$hasil = $this->db->query("INSERT INTO `pt_home_industri` (`id_pt`, `nama_pt`, `pemilik`, `latitude`, `longtitude`, `foto`, `author`)
+		VALUES (NULL, '$nama', '$pemilik', '$latitude', '$longtitude', '$data', '$author')");
+		return $hasil;
+	}
+
+	public function simpan_aset($author,$latitude,$longtitude,$ketua,$nama,$data)
+	{
+		$hasil = $this->db->query("INSERT INTO `aset_desa` (`id_aset`, `nama_aset`, `ketua`, `latitude`, `longtitude`, `foto`, `author`)
+		VALUES (NULL, '$nama', '$ketua', '$latitude', '$longtitude', '$data', '$author')");
+		return $hasil;
+	}
+
+	public function hapus_sekolah($id_sekolah)
+	{
+		$hasil = $this->db->query("DELETE FROM `sekolah_tpa` WHERE `sekolah_tpa`.`id_sekolah` = $id_sekolah");
+		return $hasil;
+	}
+
+	public function hapus_ibadah($id_ibadah)
+	{
+		$hasil = $this->db->query("DELETE FROM `ibadah` WHERE `ibadah`.`id_ibadah` = $id_ibadah");
+		return $hasil;
+	}
+
+	public function hapus_pt($id_pt)
+	{
+		$hasil = $this->db->query("DELETE FROM `pt_home_industri` WHERE `pt_home_industri`.`id_pt` = $id_pt");
+		return $hasil;
+	}
+
+	public function hapus_aset($id_aset)
+	{
+		$hasil = $this->db->query("DELETE FROM `aset_desa` WHERE `aset_desa`.`id_aset` = $id_aset");
+		return $hasil;
+	}
 }
