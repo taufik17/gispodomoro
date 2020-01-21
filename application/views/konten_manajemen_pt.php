@@ -31,7 +31,7 @@
 								<td><?= $row->nama_pt; ?></td>
 								<td><?= $row->pemilik; ?></td>
 								<td style="text-align: center">
-									<a  href="<?php echo base_url();?>manajemen_pt/lihat/<?= $row->id_pt; ?>" class="btn btn-info btn-sm" target="_blank">
+									<a  href="<?php echo base_url();?>gis_pt/detail/<?= $row->id_pt; ?>" class="btn btn-info btn-sm" target="_blank">
 									<i class="fas fa-eye"></i>
 									</a>
 									<a  href="<?php echo base_url();?>manajemen_pt/edit/<?= $row->id_pt; ?>" class="btn btn-warning btn-sm" target="_blank">

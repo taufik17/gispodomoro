@@ -14,4 +14,11 @@ class Gis_all extends CI_Controller {
 		$isi['judul'] = "GIS Semua Aset & Potensi";
 		$this->load->view('tampilan_gis', $isi);
 	}
+
+	public function sekolah_tpa_json()
+	{
+		$data = $this->db->get('sekolah_tpa')->result();
+		echo json_encode($data);
+	}
+
 }

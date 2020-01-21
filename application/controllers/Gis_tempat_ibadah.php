@@ -20,4 +20,25 @@ class Gis_tempat_ibadah extends CI_Controller {
 		$data = $this->db->get('ibadah')->result();
 		echo json_encode($data);
 	}
+
+	public function detail()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$isi['data']		= $this->Model_data->dataadmin();
+		$id_ibadah = $this->uri->segment(3);
+		$title_detail = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_bangunan | Pekon Podomoro";
+			$isi['judul'] = "$nama->nama_bangunan";
+			$isi['breadcrumb'] = "$nama->nama_bangunan";
+			$isi['latitdue'] = "$nama->latitude";
+			$isi['longtitude'] = "$nama->longtitude";
+		}
+		$isi['nama_bangunan'] = "$nama->nama_bangunan";
+		$isi['menu'] = "menu_admin";
+		$isi['konten'] = "detail_gis_tempat_ibadah";
+		$isi['id_ibadah'] = $this->uri->segment(3);
+		$this->load->view('tampilan_gis', $isi);
+	}
+
 }

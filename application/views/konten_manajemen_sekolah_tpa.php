@@ -33,7 +33,7 @@
 								<td><?= $row->kepala_sekolah; ?></td>
 								<td style="text-align: center"><?= $row->status; ?></td>
 								<td style="text-align: center">
-									<a  href="<?php echo base_url();?>manajemen_sekolah_tpa/lihat/<?= $row->id_sekolah; ?>" class="btn btn-info btn-sm" target="_blank">
+									<a  href="<?php echo base_url();?>gis_sekolah_tpa/detail/<?= $row->id_sekolah; ?>" class="btn btn-info btn-sm" target="_blank">
 									<i class="fas fa-eye"></i>
 									</a>
 									<a  href="<?php echo base_url();?>manajemen_sekolah_tpa/edit/<?= $row->id_sekolah; ?>" class="btn btn-warning btn-sm" target="_blank">

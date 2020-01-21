@@ -31,7 +31,7 @@
 								<td><?= $row->nama_bangunan; ?></td>
 								<td><?= $row->ketua; ?></td>
 								<td style="text-align: center">
-									<a  href="<?php echo base_url();?>manajemen_tempat_ibadah/lihat/<?= $row->id_ibadah; ?>" class="btn btn-info btn-sm" target="_blank">
+									<a  href="<?php echo base_url();?>gis_tempat_ibadah/detail/<?= $row->id_ibadah; ?>" class="btn btn-info btn-sm" target="_blank">
 									<i class="fas fa-eye"></i>
 									</a>
 									<a  href="<?php echo base_url();?>manajemen_tempat_ibadah/edit/<?= $row->id_ibadah; ?>" class="btn btn-warning btn-sm" target="_blank">

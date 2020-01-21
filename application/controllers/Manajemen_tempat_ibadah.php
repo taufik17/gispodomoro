@@ -31,11 +31,6 @@ class Manajemen_tempat_ibadah extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
-	public function lihat()
-	{
-		echo "lihat";
-	}
-
 	public function edit()
 	{
 		echo "edit";

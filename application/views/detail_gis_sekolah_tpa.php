@@ -271,7 +271,9 @@ $(document).ready(function(){
 
 <!-- maps -->
 <script>
-var map = L.map('map').setView([-5.344002, 104.996702], 15);
+var lat =  <?= $latitdue ?>;
+var long =  <?= $longtitude ?>;
+var map = L.map('map').setView([lat, long], 15);
 var layer = L.esri.basemapLayer('Imagery').addTo(map);
 var layerLabels;
 var base_url="<?= base_url() ?>";

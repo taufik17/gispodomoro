@@ -26,19 +26,17 @@ class Gis_sekolah_tpa extends CI_Controller {
 		$this->Model_keamanan->getkeamanan();
 		$isi['data']		= $this->Model_data->dataadmin();
 		$id_sekolah = $this->uri->segment(3);
-		$title_detail = $this->db->query("SELECT nama_sekolah FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
+		$title_detail = $this->db->query("SELECT * FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
 		foreach ($title_detail->result() as $nama ) {
 			$isi['title'] = " $nama->nama_sekolah | Pekon Podomoro";
 			$isi['judul'] = "$nama->nama_sekolah";
 			$isi['breadcrumb'] = "$nama->nama_sekolah";
+			$isi['latitdue'] = "$nama->latitude";
+			$isi['longtitude'] = "$nama->longtitude";
 		}
 		$isi['nama_sekolah'] = "$nama->nama_sekolah";
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "detail_gis_sekolah_tpa";
-
-		$url = current_url();
-		$karakter = substr($url, strpos($url, "detail/") + 7);
-		$isi['nilai'] = "$karakter";
 		$isi['id_sekolah'] = $this->uri->segment(3);
 		$this->load->view('tampilan_gis', $isi);
 	}
