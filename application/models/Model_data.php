@@ -5,7 +5,7 @@ class Model_data extends CI_model {
 	public function dataadmin()
 	{
 		$session_login = $this->session->userdata('id_akun');
-		$data = $this->db->query("SELECT id_akun, username, nama, foto, jk, alamat, role, nama_pendidikan, email, no_telp
+		$data = $this->db->query("SELECT id_akun, id_pendidikan, username, nama, foto, jk, alamat, role, nama_pendidikan, email, no_telp
 															FROM user NATURAL JOIN pendidikan WHERE id_akun='$session_login'");
 		return $data;
 	}
@@ -113,6 +113,14 @@ class Model_data extends CI_model {
 	public function hapus_aset($id_aset)
 	{
 		$hasil = $this->db->query("DELETE FROM `aset_desa` WHERE `aset_desa`.`id_aset` = $id_aset");
+		return $hasil;
+	}
+
+	public function simpan_edit($id_akun,$nama_lengkap,$pendidikan,$jk,$email,$notelp,$alamat,$jabatan,$data)
+	{
+		$hasil = $this->db->query("UPDATE `user` SET `id_pendidikan` = '$pendidikan', `nama` = '$nama_lengkap', `foto` = '$data', `jk` = '$jk',
+															`alamat` = '$alamat', `role` = '$jabatan', `email` = '$email', `no_telp` = '$notelp'
+															WHERE `user`.`id_akun` = $id_akun ");
 		return $hasil;
 	}
 }

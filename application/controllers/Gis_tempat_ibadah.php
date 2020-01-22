@@ -33,7 +33,9 @@ class Gis_tempat_ibadah extends CI_Controller {
 			$isi['breadcrumb'] = "$nama->nama_bangunan";
 			$isi['latitdue'] = "$nama->latitude";
 			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
 		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_ibadah WHERE id_ibadah = $id_ibadah");
 		$isi['nama_bangunan'] = "$nama->nama_bangunan";
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "detail_gis_tempat_ibadah";

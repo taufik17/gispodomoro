@@ -33,7 +33,9 @@ class Gis_sekolah_tpa extends CI_Controller {
 			$isi['breadcrumb'] = "$nama->nama_sekolah";
 			$isi['latitdue'] = "$nama->latitude";
 			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
 		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_sekolah WHERE id_sekolah = $id_sekolah");
 		$isi['nama_sekolah'] = "$nama->nama_sekolah";
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "detail_gis_sekolah_tpa";

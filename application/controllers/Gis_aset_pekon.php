@@ -33,7 +33,9 @@ class Gis_aset_pekon extends CI_Controller {
 			$isi['breadcrumb'] = "$nama->nama_aset";
 			$isi['latitdue'] = "$nama->latitude";
 			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
 		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_aset WHERE id_aset = $id_aset");
 		$isi['nama_aset'] = "$nama->nama_aset";
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "detail_gis_aset";

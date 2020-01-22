@@ -36,8 +36,10 @@
 						<p class="text-muted"><?= $i->alamat ?></p>
 						<?php }?>
 						<hr>
-						<button type="button" class="btn btn-block btn-outline-success btn-lg">
-							<i class="fas fa-plus">&nbsp</i>Tambah Pengguna</button>
+						<a href="<?= base_url(); ?>profil/tambah_user">
+							<button type="button" class="btn btn-block btn-outline-success btn-md">
+								<i class="fas fa-plus">&nbsp</i>Tambah Pengguna</button>
+						</a>
 					</div>
 					<!-- /.card-body -->
 				</div>
@@ -45,6 +47,14 @@
 			</div>
 			<!-- /.col -->
 			<div class="col-md-9">
+				<?php
+				$info = $this->session->flashdata('info');
+				if(!empty($info))
+				{
+					echo $info;
+				}
+				?>
+
 				<div class="card">
 					<div class="card-header p-2">
 						<ul class="nav nav-pills">
@@ -98,7 +108,7 @@
 							<!-- /.tab-pane -->
 
 							<div class="tab-pane" id="settings">
-								<form class="form-horizontal">
+								<form class="form-horizontal" method="POST" action="<?= base_url(); ?>profil/simpan_edit" enctype="multipart/form-data">
 
 									<div class="form-group row">
 										<label for="inputName" class="col-sm-2 col-form-label">Username</label>
@@ -117,11 +127,11 @@
 										<label for="inputExperience" class="col-sm-2 col-form-label">Pendidikan</label>
 										<div class="col-sm-10">
 											<select class="form-control select2 select2-hidden-accessible" name="pendidikan" style="width: 100%;" tabindex="-1" aria-hidden="true" required>
-												<option selected="selected"><?= $i->nama_pendidikan ?></option>
+												<option selected="selected" value="<?= $i->id_pendidikan ?>"><?= $i->nama_pendidikan ?></option>
 												<?php
 												foreach ($pendidikan->result() as $row ) {
 												?>
-												<option value="<?php echo $row->id_pendidikan; ?>" ><?php echo $row->nama_pendidikan; ?></option>
+												<option value="<?= $row->id_pendidikan; ?>" ><?php echo $row->nama_pendidikan; ?></option>
 												<?php } ?>
 											</select>
 										</div>
@@ -169,36 +179,37 @@
 									<div class="form-group row">
 										<label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
 										<div class="col-sm-10">
-											<input type="email" class="form-control" id="inputEmail" placeholder="Email" value="<?= $i->email ?>">
+											<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" value="<?= $i->email ?>">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label for="inputEmail" class="col-sm-2 col-form-label">No Telpon</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" placeholder="Nomor Telpon" value="<?= $i->no_telp ?>">
+											<input type="text" class="form-control" name="notelp" placeholder="Nomor Telpon" value="<?= $i->no_telp ?>">
 										</div>
 									</div>
 
 									<div class="form-group row">
 										<label for="inputSkills" class="col-sm-2 col-form-label">Alamat</label>
 										<div class="col-sm-10">
-                      <textarea class="form-control" id="inputExperience" placeholder="Alamat"><?= $i->alamat ?></textarea>
+                      <textarea class="form-control" id="inputExperience" name="alamat" placeholder="Alamat"><?= $i->alamat ?></textarea>
                     </div>
 									</div>
 
 									<div class="form-group row">
 										<label for="inputEmail" class="col-sm-2 col-form-label">Jabatan</label>
 										<div class="col-sm-10">
-											<input type="text" class="form-control" placeholder="Jabatan" value="<?= $i->role ?>">
+											<input type="text" class="form-control" name="jabatan" placeholder="Jabatan" value="<?= $i->role ?>">
 										</div>
 									</div>
 
 									<div class="form-group row">
 											<label for="exampleInputFile" class="col-sm-2 control-label">Foto Profil</label>
 											<div class="col-sm-10">
-												<input type="file" name="filefoto" class="dropify" data-height="200">
+												<input type="file" name="poto_baru" class="dropify" data-height="200">
 												<p class="help-block">File Max 2 Mb</p>
+												<input type="text" name="poto_lama" value="<?= $i->foto ?>" hidden>
 											</div>
 									</div>
 
@@ -206,7 +217,7 @@
 										<div class="offset-sm-2 col-sm-10">
 											<div class="checkbox">
 												<label>
-													<input type="checkbox"> Data yang diinputkan adalah data yang benar
+													<input type="checkbox" required> Data yang diinputkan adalah data yang benar
 												</label>
 											</div>
 										</div>
@@ -214,14 +225,14 @@
 									<div class="form-group row">
 										<div class="offset-sm-2 col-sm-10">
 											<button type="submit" class="btn btn-danger">
-												<i class="fas fa-save">&nbsp</i>Simpan</button>
+												<i class="fas fa-save">&nbsp</i>Simpannnn</button>
 										</div>
 									</div>
 								</form>
 							</div>
 
 							<div class="tab-pane" id="ubah_pass">
-								<form class="form-horizontal">
+								<form class="form-horizontal" method="POST" action="<?= base_url(); ?>profil/ubahpass" enctype="multipart/form-data">
 
 									<div class="form-group row">
 										<label for="inputName" class="col-sm-2 col-form-label">Username</label>
@@ -250,15 +261,6 @@
 										</div>
 									</div>
 
-									<div class="form-group row">
-										<div class="offset-sm-2 col-sm-10">
-											<div class="checkbox">
-												<label>
-													<input type="checkbox"> Data yang diinputkan adalah data yang benar
-												</label>
-											</div>
-										</div>
-									</div>
 									<div class="form-group row">
 										<div class="offset-sm-2 col-sm-10">
 											<button type="submit" class="btn btn-danger">

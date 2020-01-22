@@ -19,7 +19,8 @@ class Dashboard_admin extends CI_Controller {
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
 
-	public function logout(){
+	public function logout()
+	{
 		$this->session->sess_destroy($sess);
 		$this->session->unset_userdata($sess);
 		redirect('login');

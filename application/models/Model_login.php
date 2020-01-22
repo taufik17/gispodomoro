@@ -25,14 +25,59 @@ class Model_login extends CI_model {
 					'<div class="alert alert-danger alert-dismissible">
 					                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
 					                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
-					                Maaf Email atau Sandi salah
+					                Maaf Username atau password salah
 					              </div>');
 			redirect('login');
 		}
 	}
 
+	public function updatesandi($id_akun,$password_baru,$password_lama,$password_konf)
+	{
+		$pwd = hash('sha512', $password_lama . config_item('encryption_key'));
+		$hash = hash('sha512', $password_baru . config_item('encryption_key'));
+		$this->db->where('id_akun',$id_akun);
+		$this->db->where('password',$pwd);
+		$query = $this->db->get('user');
+		if($query->num_rows()>0)
+		{
+				if ($password_lama == $password_baru) {
+					$this->session->set_flashdata('info',
+							'<div class="alert alert-danger alert-dismissible">
+							                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+							                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+							                Sandi tidak boleh sama
+							              </div>');
+					redirect('profil');
+				}
+				else {
+					if ($password_baru != $password_konf) {
+						$this->session->set_flashdata('info',
+								'<div class="alert alert-danger alert-dismissible">
+								                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+								                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+								                Konfirmasi Salah
+								              </div>');
+						redirect('profil');
+					}
+					else {
+						$hasil = $this->db->query("UPDATE `user` SET `password` = '$hash' WHERE `user`.`id_akun` = $id_akun");
+						return $hasil;
+					}
+				}
+		}
+		else {
+			$this->session->set_flashdata('info',
+					'<div class="alert alert-danger alert-dismissible">
+					                <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+					                <h4><i class="icon fa fa-ban"></i> Alert!</h4>
+					                Sandi Lama Salah
+					              </div>');
+			redirect('profil');
+		}
+	}
+
 	public function hash($string)
     {
-        return hash('sha512', $string . config_item('encryption_key'));
+      return hash('sha512', $string . config_item('encryption_key'));
     }
 }
