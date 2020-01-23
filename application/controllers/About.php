@@ -20,7 +20,7 @@ class About extends CI_Controller {
 		$isi['menu'] = "menu_publik";
 		$isi['konten'] = "konten_publik_about";
 		$isi['title'] = "About | Pekon Podomoro";
-		$isi['judul'] = "About";
+		$isi['judul'] = "Tentang WebGIS Podomoro";
 		$this->load->view('tampilan_publik_nomap', $isi);
 	}
 }

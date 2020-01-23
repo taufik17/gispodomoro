@@ -1,13 +1,16 @@
 <div class="collapse navbar-collapse order-3" id="navbarCollapse">
 	<ul class="navbar-nav">
-		<li class="nav-item active">
+		<li <?=$this->uri->segment(1) == '' ? 'class="nav-item active"' : 'class="nav-item"'?>>
 			<a href="<?= base_url(); ?>" class="nav-link">
 				<i class="fas fa-home">&nbsp</i>
 				Home
 			</a>
 		</li>
 
-		<li class="nav-item dropdown">
+		<li <?=$this->uri->segment(1) == 'manajemen_sekolah_tpa' || $this->uri->segment(1) == 'manajemen_tempat_ibadah'
+		|| $this->uri->segment(1) == 'manajemen_pt' || $this->uri->segment(1) == 'manajemen_aset_pekon'
+		? 'class="nav-item dropdown active"' : 'class="nav-item dropdown"'?>>
+
 			<a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">
 				<i class="fas fa-th-large">&nbsp</i>
 				List Data</a>
@@ -19,14 +22,14 @@
 			</ul>
 		</li>
 
-		<li class="nav-item">
+		<li <?=$this->uri->segment(1) == 'gallery' ? 'class="nav-item active"' : 'class="nav-item"'?>>
 			<a href="<?= base_url(); ?>gallery/galeri_publik" class="nav-link">
 				<i class="fas fa-image">&nbsp</i>
 				Galeri
 			</a>
 		</li>
 
-		<li class="nav-item">
+		<li <?=$this->uri->segment(1) == 'about' ? 'class="nav-item active"' : 'class="nav-item"'?>>
 			<a href="<?= base_url(); ?>about/about_publik" class="nav-link">
 				<i class="fas fa-info-circle">&nbsp</i>
 				About
