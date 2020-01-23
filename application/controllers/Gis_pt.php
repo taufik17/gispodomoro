@@ -43,4 +43,23 @@ class Gis_pt extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
+	public function detail_publik()
+	{
+		$id_pt = $this->uri->segment(3);
+		$title_detail = $this->db->query("SELECT * FROM pt_home_industri WHERE id_pt = $id_pt");
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_pt | Pekon Podomoro";
+			$isi['judul'] = "$nama->nama_pt";
+			$isi['latitdue'] = "$nama->latitude";
+			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
+		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_pt WHERE id_pt = $id_pt");
+		$isi['nama_pt'] = "$nama->nama_pt";
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "detail_publik_gis_pt";
+		$isi['id_pt'] = $this->uri->segment(3);
+		$this->load->view('tampilan_publik', $isi);
+	}
+
 }

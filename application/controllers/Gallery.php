@@ -14,4 +14,13 @@ class Gallery extends CI_Controller {
 		$isi['judul'] = "Galeri";
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function galeri_publik()
+	{
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "konten_publik_galeri";
+		$isi['title'] = "Galeri | Pekon Podomoro";
+		$isi['judul'] = "Galeri";
+		$this->load->view('tampilan_publik_nomap', $isi);
+	}
 }

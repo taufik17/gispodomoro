@@ -31,7 +31,7 @@
 								<td><?= $row->nama_aset; ?></td>
 								<td><?= $row->ketua; ?></td>
 								<td style="text-align: center">
-									<a  href="<?php echo base_url();?>manajemen_aset_pekon/lihat/<?= $row->id_aset; ?>" class="btn btn-info btn-sm" target="_blank">
+									<a  href="<?php echo base_url();?>gis_aset_pekon/detail/<?= $row->id_aset; ?>" class="btn btn-info btn-sm" target="_blank">
 									<i class="fas fa-eye"></i>
 									</a>
 									<a  href="<?php echo base_url();?>manajemen_aset_pekon/edit/<?= $row->id_aset; ?>" class="btn btn-warning btn-sm" target="_blank">

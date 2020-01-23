@@ -17,6 +17,16 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
 
+	public function data_publik()
+	{
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "konten_data_sekolah_tpa";
+		$isi['title'] = "Data Sekolah & TPA | Pekon Podomoro";
+		$isi['judul'] = "Data Sekolah & TPA";
+		$isi['daftar_sekolah'] = $this->Model_data->daftar_sekolah();
+		$this->load->view('tampilan_publik_nomap', $isi);
+	}
+
 	public function tambah()
 	{
 		$this->Model_keamanan->getkeamanan();
@@ -31,11 +41,6 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
-	public function lihat()
-	{
-		echo "lihat";
-	}
-
 	public function edit()
 	{
 		echo "edit";
@@ -43,6 +48,7 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 
 	public function hapus()
 	{
+		$this->Model_keamanan->getkeamanan();
 		$id_sekolah = $this->uri->segment(3);
 		$this->Model_data->hapus_sekolah($id_sekolah);
 		$this->session->set_flashdata('sukses','Data Berhasil dihapus');
@@ -50,6 +56,7 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 	}
 
 	public function simpan() {
+		$this->Model_keamanan->getkeamanan();
 		$config['upload_path'] = './assets/foto_sekolah_tpa/'; //path folder
 		$config['allowed_types']='jpg|JPG|png|PNG|jpeg|JPEG';
 		$config['max_size'] = 0;

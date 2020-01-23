@@ -17,6 +17,16 @@ class Manajemen_aset_pekon extends CI_Controller {
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
 
+	public function data_publik()
+	{
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "konten_data_aset_pekon";
+		$isi['title'] = "Data Aset Pekon | Pekon Podomoro";
+		$isi['judul'] = "Data Aset Pekon";
+		$isi['daftar_aset_pekon'] = $this->Model_data->daftar_aset_pekon();
+		$this->load->view('tampilan_publik_nomap', $isi);
+	}
+
 	public function tambah()
 	{
 		$this->Model_keamanan->getkeamanan();
@@ -29,11 +39,6 @@ class Manajemen_aset_pekon extends CI_Controller {
 		$isi['judul'] = "Tambah Aset Pekon";
 		$isi['daftar_aset'] = $this->Model_data->daftar_aset_pekon();
 		$this->load->view('tampilan_gis', $isi);
-	}
-
-	public function lihat()
-	{
-		echo "lihat";
 	}
 
 	public function edit()

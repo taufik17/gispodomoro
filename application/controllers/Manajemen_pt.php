@@ -17,6 +17,16 @@ class Manajemen_pt extends CI_Controller {
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
 
+	public function data_publik()
+	{
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "konten_data_pt";
+		$isi['title'] = "Data PT & Home Industri | Pekon Podomoro";
+		$isi['judul'] = "Data PT & Home Industri";
+		$isi['daftar_pt'] = $this->Model_data->daftar_pt();
+		$this->load->view('tampilan_publik_nomap', $isi);
+	}
+
 	public function tambah()
 	{
 		$this->Model_keamanan->getkeamanan();

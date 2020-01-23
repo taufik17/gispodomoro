@@ -14,4 +14,13 @@ class About extends CI_Controller {
 		$isi['judul'] = "About";
 		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function about_publik()
+	{
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "konten_publik_about";
+		$isi['title'] = "About | Pekon Podomoro";
+		$isi['judul'] = "About";
+		$this->load->view('tampilan_publik_nomap', $isi);
+	}
 }
