@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+
   <title><?= $title ?></title>
+
   <!-- Tell the browser to be responsive to screen width -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- dropify -->
@@ -51,14 +54,23 @@
 
   <style>
     body { margin:0; padding:0; }
-    #map { position: absolute; top:0; bottom:0; right:0; left:0;}
+    #map {
+      position: absolute;
+      top:0;
+      bottom:0;
+      right:0;
+      left:0;
+    }
     .lebar {
-      min-height: 480px;
+      height: 540px;
+    }
+    .lebar_detail {
+      height: 430px;
     }
   </style>
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
 
+</head>
+<body class="hold-transition layout-top-nav">
   <style>
     #basemaps-wrapper {
       position: absolute;
@@ -66,69 +78,33 @@
       right: 10px;
       z-index: 400;
       background: white;
-      padding: 10px;
+      padding: 0px;
     }
     #basemaps {
-      margin-bottom: 5px;
+      margin-bottom: 0px;
     }
   </style>
-
 <div class="wrapper">
 
   <!-- Navbar -->
-  <nav class="main-header navbar navbar-expand navbar-white navbar-light">
-    <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
+  <nav class="main-header navbar navbar-expand-md navbar-light navbar-white">
+    <div class="container">
+      <a href="<?= base_url() ?>" class="navbar-brand">
+        <img src="<?= base_url(); ?>assets/marker/logo.png" alt="AdminLTE Logo" class="brand-image">
+      </a>
 
-		<ul class="navbar-nav ml-auto">
-				<div class="user-panel d-flex">
-        <div class="image">
-          <?php foreach ($data->result() as $i ) {
-          ?>
-          <img src="<?= base_url(); ?>assets/user/<?= $i->foto ?>" class="img-circle" alt="User Image">
-        </div>
-        <div class="info">
-          <a href="<?= base_url(); ?>profil" class="d-block"><?= $i->nama ?></a>
-          <?php }?>
-        </div>
-      </div>
-			<li class="nav-item">
-        <a class="nav-link" href="<?= base_url(); ?>dashboard_admin/logout">
-					<i class="fas fa-sign-out-alt"></i>
-        </a>
-      </li>
-    </ul>
+      <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <?php $this->load->view($menu); ?>
+    </div>
   </nav>
   <!-- /.navbar -->
 
-  <!-- Main Sidebar Container -->
-
-	<?php $this->load->view($menu); ?>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0 text-dark"><?= $judul ?></h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item">GIS</li>
-              <li class="breadcrumb-item active"><?= $breadcrumb ?></li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
     <!-- /.content-header -->
 
     <!-- Main content -->
     <?php $this->load->view($konten); ?>
-    <!-- /.content -->

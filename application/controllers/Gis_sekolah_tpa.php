@@ -42,4 +42,23 @@ class Gis_sekolah_tpa extends CI_Controller {
 		$isi['id_sekolah'] = $this->uri->segment(3);
 		$this->load->view('tampilan_gis', $isi);
 	}
+
+	public function detail_publik()
+	{
+		$id_sekolah = $this->uri->segment(3);
+		$title_detail = $this->db->query("SELECT * FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_sekolah | Pekon Podomoro";
+			$isi['judul'] = "$nama->nama_sekolah";
+			$isi['latitdue'] = "$nama->latitude";
+			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
+		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_sekolah WHERE id_sekolah = $id_sekolah");
+		$isi['nama_sekolah'] = "$nama->nama_sekolah";
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "detail_publik_gis_sekolah_tpa";
+		$isi['id_sekolah'] = $this->uri->segment(3);
+		$this->load->view('tampilan_publik', $isi);
+	}
 }

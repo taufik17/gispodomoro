@@ -30,6 +30,7 @@
   <link rel="stylesheet" href="<?= base_url(); ?>assets/plugins/summernote/summernote-bs4.css">
   <!-- Google Font: Source Sans Pro -->
   <link href="<?= base_url(); ?>assets/dist/css/gogleapis.css" rel="stylesheet">
+  <link rel="shortcut icon" href="<?= base_url(); ?>assets/favicon.ico">
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -38,12 +39,6 @@
   <!-- Navbar -->
   <nav class="main-header navbar navbar-expand navbar-white navbar-light">
     <!-- Left navbar links -->
-    <ul class="navbar-nav">
-      <li class="nav-item">
-        <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>
-      </li>
-    </ul>
-
     <ul class="navbar-nav">
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#"><i class="fas fa-bars"></i></a>

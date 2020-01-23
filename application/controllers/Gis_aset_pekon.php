@@ -43,4 +43,23 @@ class Gis_aset_pekon extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
+	public function detail_publik()
+	{
+		$id_aset = $this->uri->segment(3);
+		$title_detail = $this->db->query("SELECT * FROM aset_desa WHERE id_aset = $id_aset");
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_aset | Pekon Podomoro";
+			$isi['judul'] = "$nama->nama_aset";
+			$isi['latitdue'] = "$nama->latitude";
+			$isi['longtitude'] = "$nama->longtitude";
+			$isi['foto1'] = "$nama->foto";
+		}
+		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_aset WHERE id_aset = $id_aset");
+		$isi['nama_aset'] = "$nama->nama_aset";
+		$isi['menu'] = "menu_publik";
+		$isi['konten'] = "detail_publik_gis_aset";
+		$isi['id_aset'] = $this->uri->segment(3);
+		$this->load->view('tampilan_publik', $isi);
+	}
+
 }
