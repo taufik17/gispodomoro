@@ -12,7 +12,7 @@
 									 src="<?= base_url(); ?>assets/user/<?= $i->foto ?>"
 									 alt="User profile picture">
 						</div>
-						<h3 class="profile-username text-center"><?= $i->nama ?></h3>
+						<h3 class="profile-username text-center"><?= $i->nama; ?></h3>
 						<p class="text-muted text-center"><?= $i->role ?></p>
 					</div>
 					<!-- /.card-body -->
@@ -225,7 +225,7 @@
 									<div class="form-group row">
 										<div class="offset-sm-2 col-sm-10">
 											<button type="submit" class="btn btn-danger">
-												<i class="fas fa-save">&nbsp</i>Simpannnn</button>
+												<i class="fas fa-save">&nbsp</i>Simpan</button>
 										</div>
 									</div>
 								</form>

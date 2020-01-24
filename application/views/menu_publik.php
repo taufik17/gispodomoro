@@ -40,11 +40,24 @@
 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
 	<!-- Notifications Dropdown Menu -->
 	<li class="nav-item">
+		<?php
+		$sess = $this->session->userdata('username');
+		if(empty($sess)) {
+		?>
 		<a href="<?= base_url(); ?>login">
 			<button type="button" class="btn btn-block btn-outline-success">
 				<i class="fas fa-sign-in-alt">&nbsp</i>
 				Login</button>
 		</a>
+		<?php } else {
+			?>
+			<a href="<?= base_url(); ?>login">
+				<button type="button" class="btn btn-block btn-outline-success">
+					<i class="fas fa-tachometer-alt">&nbsp</i>
+					Dashboard</button>
+			</a>
+		<?php } ?>
+
 	</li>
 
 </ul>

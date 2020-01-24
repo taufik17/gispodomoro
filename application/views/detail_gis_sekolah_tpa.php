@@ -86,7 +86,9 @@
             </div>
 			</section>
 
-
+			<?php
+			foreach ($data_sekolah->result() as $i ) {
+			?>
 			<section class="col-lg-12 connectedSortable">
 				<div class="card card-info">
               <div class="card-header">
@@ -98,111 +100,104 @@
 
 							<div class="card-body">
 								<table class="table table-striped table-bordered">
-  <tbody><tr>
-    <th width="400px">A. Gambaran Umum Sekolah</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>NPSN</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Nama Sekolah</td>
-    <td>Sekolah 5</td>
-  </tr>
-  <tr>
-    <td>Status Sekolah</td>
-    <td>Negri</td>
-  </tr>
-  <tr>
-    <td>Kurikulum</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Alamat Sekolah</td>
-    <td>kisaran</td>
-  </tr>
+								  <tbody><tr>
+								    <th width="400px">A. Gambaran Umum Sekolah</th>
+								    <th></th>
+								  </tr>
+								  <tr>
+								    <td>NPSN</td>
+								    <td><?= $i->npsn; ?></td>
+								  </tr>
+								  <tr>
+								    <td>Nama Sekolah</td>
+								    <td><?= $i->nama_sekolah; ?></td>
+								  </tr>
+								  <tr>
+								    <td>Status Sekolah</td>
+								    <td><?= $i->status; ?></td>
+								  </tr>
+								  <tr>
+								    <td>Kurikulum</td>
+								    <td><?= $i->kurikulum; ?></td>
+								  </tr>
+									<tr>
+								    <td>Alamat Sekolah</td>
+								    <td><?= $i->alamat; ?></td>
+								  </tr>
 
-	<tr>
-    <td>No Telpon</td>
-    <td>082284848484</td>
-  </tr>
-	<tr>
-    <td>Web Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Email Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Siswa</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Kepala Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Telpon Kepala Sekolah</td>
-    <td></td>
-  </tr>
+									<tr>
+								    <td>No Telpon</td>
+								    <td><?= $i->no_telp; ?></td>
+								  </tr>
+									<tr>
+								    <td>Web Sekolah</td>
+								    <td><?= $i->web; ?></td>
+								  </tr>
+									<tr>
+								    <td>Email Sekolah</td>
+								    <td><?= $i->email; ?></td>
+								  </tr>
+									<tr>
+								    <td>Jumlah Siswa</td>
+								    <td><?= $i->jumlah_siswa; ?></td>
+								  </tr>
+									<tr>
+								    <td>Kepala Sekolah</td>
+								    <td><?= $i->kepala_sekolah; ?></td>
+								  </tr>
+									<tr>
+								    <td>Telpon Kepala Sekolah</td>
+								    <td><?= $i->telp_kepsek; ?></td>
+								  </tr>
 
-  <tr>
-    <th>B. SDM Sekolah</th>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Jumlah Tenaga Kependidikan</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Jumlah Guru</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Guru Honorer</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Guru PNS</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Staff</td>
-    <td></td>
-  </tr>
+								  <tr>
+								    <th>B. SDM Sekolah</th>
+								    <td></td>
+								  </tr>
+								  <tr>
+								    <td>Jumlah Tenaga Kependidikan</td>
+								    <td><?= $i->jmlh_tendik; ?></td>
+								  </tr>
+								  <tr>
+								    <td>Jumlah Guru</td>
+								    <td><?= $i->jmlh_guru; ?></td>
+								  </tr>
+									<tr>
+								    <td>Jumlah Guru Honorer</td>
+								    <td><?= $i->jmlh_guru_honor; ?></td>
+								  </tr>
+									<tr>
+								    <td>Jumlah Guru PNS</td>
+								    <td><?= $i->jmlh_guru_pns; ?></td>
+								  </tr>
+									<tr>
+								    <td>Staff</td>
+								    <td><?= $i->staff; ?></td>
+								  </tr>
 
-  <tr>
-    <th>C. Keunggulan Sekolah</th>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Visi</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Misi</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Tagline</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Kekhasan</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Program Unggulan</td>
-    <td></td>
-  </tr>
-
-</tbody></table>
+								  <tr>
+								    <th>C. Keunggulan Sekolah</th>
+								    <td></td>
+								  </tr>
+								  <tr>
+								    <td>Visi</td>
+								    <td><?= $i->visi; ?></td>
+								  </tr>
+									<tr>
+								    <td>Misi</td>
+								    <td><?= $i->misi; ?></td>
+								  </tr>
+								  <tr>
+								    <td>Tagline</td>
+								    <td><?= $i->tagline; ?></td>
+								  </tr>
+								</tbody>
+							</table>
 							</div>
                 <!-- /.card-body -->
             </div>
 			</section>
+		<?php } ?>
 			<!-- right col -->
 		</div>
 		<!-- /.row (main row) -->

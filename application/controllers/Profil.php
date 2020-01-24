@@ -20,6 +20,7 @@ class Profil extends CI_Controller {
 	{
 		$this->Model_keamanan->getkeamanan();
 		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['pendidikan'] = $this->Model_data->datapendidikan();
 		$isi['menu'] = "menu_admin";
 		$isi['title'] = "Tambah Pengguna | Pekon Podomoro";
 		$isi['breadcrumb0'] = "Dashboard";
@@ -27,6 +28,26 @@ class Profil extends CI_Controller {
 		$isi['judul'] = "Tambah Pengguna";
 		$isi['konten'] = "konten_tambah_pengguna";
 		$this->load->view('tampilan_dashboard_admin', $isi);
+	}
+
+	public function simpan_user()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$id_akun				= $this->session->userdata('id_akun');
+		$nama_lengkap		= $this->input->post('nama_lengkap');
+		$username				= $this->input->post('username');
+		$password				= $this->input->post('password');
+		$jk							= $this->input->post('jk');
+		$pendidikan			= $this->input->post('pendidikan');
+
+		$this->Model_data->simpan_user($id_akun,$nama_lengkap,$username,$password,$jk,$pendidikan);
+		$this->session->set_flashdata('info',
+				'<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Info</h4>
+						User Berhasil Ditambahkan
+					</div>');
+		redirect('profil/tambah_user');
 	}
 
 	public function simpan_edit()

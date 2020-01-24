@@ -123,4 +123,29 @@ class Model_data extends CI_model {
 															WHERE `user`.`id_akun` = $id_akun ");
 		return $hasil;
 	}
+
+	public function simpan_user($id_akun,$nama_lengkap,$username,$password,$jk,$pendidikan)
+	{
+		$hash = hash('sha512', $password . config_item('encryption_key'));
+		$hasil = $this->db->query("INSERT INTO `user` (`id_akun`, `id_pendidikan`, `username`, `nama`, `password`, `foto`, `jk`, `alamat`, `role`, `email`, `no_telp`, `pendaftar`)
+															 VALUES (NULL, '$pendidikan', '$username', '$nama_lengkap', '$hash', 'avatar.png', '$jk', '', '', '', '', '$id_akun')");
+		return $hasil;
+	}
+
+	public function data_sekolah($id_sekolah)
+	{
+		$hasil = $this->db->query("SELECT * FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
+		return $hasil;
+	}
+
+	public function simpan_edit_sekolah_tpa($npsn,$nama_sekolah,$status_sekolah,$kurikulum,$alamat_sekolah,$no_telpon,$web,$email,$jumlah_siswa,$kepsek,$telpon_kepsek,
+																					$tendik,$jmlh_guru,$jmlh_honorer,$jmlh_pns,$staff,$visi,$misi,$tagline,$id_sekolah)
+	{
+		$hasil = $this->db->query("UPDATE `sekolah_tpa` SET `nama_sekolah` = '$nama_sekolah', `kepala_sekolah` = '$kepsek',
+															`status` = '$status_sekolah', `no_telp` = '$no_telpon', `npsn` = '$npsn', `kurikulum` = '$kurikulum', `alamat` = '$alamat_sekolah', `web` = '$web', `email` = '$email',
+															`jumlah_siswa` = '$jumlah_siswa', `telp_kepsek` = '$telpon_kepsek', `jmlh_tendik` = '$tendik', `jmlh_guru` = '$jmlh_guru', `jmlh_guru_honor` = '$jmlh_honorer', `jmlh_guru_pns` = '$jmlh_pns',
+															`staff` = '$staff', `visi` = '$visi', `misi` = '$misi', `tagline` = '$tagline'
+															WHERE `sekolah_tpa`.`id_sekolah` = $id_sekolah ");
+		return $hasil;
+	}
 }

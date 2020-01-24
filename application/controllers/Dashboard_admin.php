@@ -23,6 +23,6 @@ class Dashboard_admin extends CI_Controller {
 	{
 		$this->session->sess_destroy($sess);
 		$this->session->unset_userdata($sess);
-		redirect('login');
+		redirect('publik');
 	}
 }

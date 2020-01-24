@@ -27,6 +27,7 @@ class Gis_sekolah_tpa extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$id_sekolah = $this->uri->segment(3);
 		$title_detail = $this->db->query("SELECT * FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
+		$isi['data_sekolah'] = $this->db->query("SELECT * FROM sekolah_tpa WHERE id_sekolah = $id_sekolah");
 		foreach ($title_detail->result() as $nama ) {
 			$isi['title'] = " $nama->nama_sekolah | Pekon Podomoro";
 			$isi['judul'] = "$nama->nama_sekolah";

@@ -43,7 +43,22 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 
 	public function edit()
 	{
-		echo "edit";
+		$this->Model_keamanan->getkeamanan();
+		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['menu'] = "menu_admin";
+		$isi['konten'] = "konten_edit_sekolah_tpa";
+		$isi['breadcrumb0'] = "Data Master";
+		$isi['judul'] = "Edit Sekolah & TPA";
+		$id_sekolah = $this->uri->segment(3);
+
+		$title_detail = $this->Model_data->data_sekolah($id_sekolah);
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_sekolah | Edit";
+			$isi['breadcrumb'] = "$nama->nama_sekolah";
+		}
+
+		$isi['data_sekolah'] = $this->Model_data->data_sekolah($id_sekolah);
+		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
 
 	public function hapus()
@@ -89,5 +104,40 @@ class Manajemen_sekolah_tpa extends CI_Controller {
 		{
 			echo "Gagal, File belum di pilih";
 		}
+	}
+
+	public function simpan_edit()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$npsn						= $this->input->post('npsn');
+		$nama_sekolah		= $this->input->post('nama_sekolah');
+		$status_sekolah	= $this->input->post('status_sekolah');
+		$kurikulum			= $this->input->post('kurikulum');
+		$alamat_sekolah	= $this->input->post('alamat_sekolah');
+		$no_telpon			= $this->input->post('no_telpon');
+		$web						= $this->input->post('web');
+		$email					= $this->input->post('email');
+		$jumlah_siswa		= $this->input->post('jumlah_siswa');
+		$kepsek					= $this->input->post('kepsek');
+		$telpon_kepsek	= $this->input->post('telpon_kepsek');
+		$tendik					= $this->input->post('tendik');
+		$jmlh_guru			= $this->input->post('jmlh_guru');
+		$jmlh_honorer		= $this->input->post('jmlh_honorer');
+		$jmlh_pns				= $this->input->post('jmlh_pns');
+		$staff					= $this->input->post('staff');
+		$visi						= $this->input->post('visi');
+		$misi						= $this->input->post('misi');
+		$tagline				= $this->input->post('tagline');
+		$id_sekolah			= $this->input->post('id_sekolah');
+
+		$this->Model_data->simpan_edit_sekolah_tpa($npsn,$nama_sekolah,$status_sekolah,$kurikulum,$alamat_sekolah,$no_telpon,$web,$email,$jumlah_siswa,$kepsek,
+																							$telpon_kepsek,$tendik,$jmlh_guru,$jmlh_honorer,$jmlh_pns,$staff,$visi,$misi,$tagline,$id_sekolah);
+		$this->session->set_flashdata('info',
+				'<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Info</h4>
+						Data Berhasil Diubah
+					</div>');
+		redirect('manajemen_sekolah_tpa');
 	}
 }
