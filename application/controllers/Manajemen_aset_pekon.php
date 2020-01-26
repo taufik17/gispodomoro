@@ -43,7 +43,42 @@ class Manajemen_aset_pekon extends CI_Controller {
 
 	public function edit()
 	{
-		echo "edit";
+		$this->Model_keamanan->getkeamanan();
+		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['menu'] = "menu_admin";
+		$isi['konten'] = "konten_edit_aset";
+		$isi['breadcrumb0'] = "Data Master";
+		$isi['judul'] = "Edit Aset Pekon ";
+		$id_aset = $this->uri->segment(3);
+
+		$title_detail = $this->Model_data->data_aset($id_aset);
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_aset | Edit";
+			$isi['breadcrumb'] = "$nama->nama_aset";
+		}
+
+		$isi['data_pt'] = $this->Model_data->data_aset($id_aset);
+		$this->load->view('tampilan_dashboard_admin', $isi);
+	}
+
+	public function simpan_edit()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$id_aset						= $this->input->post('id_aset');
+		$nama								= $this->input->post('nama');
+		$ketua							= $this->input->post('ketua');
+		$alamat							= $this->input->post('alamat');
+		$luas_tanah					= $this->input->post('luas_tanah');
+		$luas_bangunan			= $this->input->post('luas_bangunan');
+		$tahun_berdiri			= $this->input->post('tahun_berdiri');
+		$this->Model_data->simpan_edit_aset($id_aset,$nama,$ketua,$alamat,$luas_tanah,$luas_bangunan,$tahun_berdiri);
+		$this->session->set_flashdata('info',
+				'<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Info</h4>
+						Data Berhasil Diubah
+					</div>');
+		redirect('manajemen_aset_pekon');
 	}
 
 	public function hapus()

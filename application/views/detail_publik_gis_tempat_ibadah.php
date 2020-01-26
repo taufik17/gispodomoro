@@ -106,6 +106,9 @@
 				</section>
 
 
+				<?php
+				foreach ($ibadah->result() as $i ) {
+				?>
 				<section class="col-lg-12 connectedSortable">
 					<div class="card card-info">
 	              <div class="card-header">
@@ -117,100 +120,82 @@
 
 								<div class="card-body">
 									<table class="table table-striped table-bordered">
-	  <tbody><tr>
-	    <th width="400px">A. Gambaran Umum</th>
-	    <th></th>
-	  </tr>
-	  <tr>
-	    <td>NPSN</td>
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td>Nama</td>
-	    <td>tes</td>
-	  </tr>
-	  <tr>
-	    <td>Kurikulum</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Alamat</td>
-	    <td>kisaran</td>
-	  </tr>
+									  <tbody><tr>
+									    <th width="400px">A. Gambaran Umum</th>
+									    <th></th>
+									  </tr>
+									  <tr>
+									    <td>Nama</td>
+									    <td><?= $i->nama_bangunan; ?></td>
+									  </tr>
+									  <tr>
+									    <td>Ketua / Penasihat</td>
+									    <td><?= $i->ketua; ?></td>
+									  </tr>
+										<tr>
+									    <td>Sekretaris</td>
+									    <td><?= $i->sekretaris; ?></td>
+									  </tr>
 
-		<tr>
-	    <td>No Telpon</td>
-	    <td>082284848484</td>
-	  </tr>
-
-		<tr>
-	    <td>Jumlah Siswa</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Kepala Pengurus</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Telpon Kepala Pengurus</td>
-	    <td></td>
-	  </tr>
-
-	  <tr>
-	    <th>B. SDM Sekolah</th>
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td>Jumlah Tenaga Kependidikan</td>
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td>Jumlah Guru</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Jumlah Guru Honorer</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Jumlah Guru PNS</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Staff</td>
-	    <td></td>
-	  </tr>
-
-	  <tr>
-	    <th>C. Keunggulan Sekolah</th>
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td>Visi</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Misi</td>
-	    <td></td>
-	  </tr>
-	  <tr>
-	    <td>Tagline</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Kekhasan</td>
-	    <td></td>
-	  </tr>
-		<tr>
-	    <td>Program Unggulan</td>
-	    <td></td>
-	  </tr>
-
-	</tbody></table>
+										<tr>
+									    <td>Bendahara</td>
+									    <td><?= $i->bendahara; ?></td>
+									  </tr>
+										<tr>
+									    <td>Takmir</td>
+									    <td><?= $i->takmir; ?></td>
+									  </tr>
+										<tr>
+									    <td>Humas</td>
+									    <td><?= $i->humas; ?></td>
+									  </tr>
+										<tr>
+									    <td>Seksi PHBI</td>
+									    <td><?= $i->seksi_phbi; ?></td>
+									  </tr>
+										<tr>
+									    <td>Seksi Pendidikan / Pustaka</td>
+									    <td><?= $i->seksi_pendidikan; ?></td>
+									  </tr>
+										<tr>
+									    <td>Seksi Sarana Prasarana</td>
+									    <td><?= $i->seksi_sarpras; ?></td>
+									  </tr>
+										<tr>
+									    <td>Seksi Pembangunan</td>
+									    <td><?= $i->seksi_pembangunan; ?></td>
+									  </tr>
+									  <tr>
+									    <th>B. Tanah & Bangunan</th>
+									    <td></td>
+									  </tr>
+									  <tr>
+									    <td>Alamat</td>
+									    <td><?= $i->alamat; ?></td>
+									  </tr>
+									  <tr>
+									    <td>Luas Tanah</td>
+									    <td><?= $i->luas_tanah; ?>&nbspm<sup>2</sup></td>
+									  </tr>
+										<tr>
+									    <td>Status Tanah</td>
+									    <td><?= $i->status_tanah; ?></td>
+									  </tr>
+										<tr>
+									    <td>Luas Bangunan</td>
+									    <td><?= $i->luas_bangunan; ?>&nbspm<sup>2</sup></td>
+									  </tr>
+										<tr>
+									    <td>Tahun Berdiri</td>
+									    <td>Tahun&nbsp<?= $i->tahun_berdiri; ?></td>
+									  </tr>
+									</tbody>
+								</table>
 								</div>
 	                <!-- /.card-body -->
 	            </div>
 				</section>
+			<?php } ?>
 				<!-- right col -->
 			</div>
 			<!-- /.row -->

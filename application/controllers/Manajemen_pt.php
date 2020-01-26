@@ -41,15 +41,54 @@ class Manajemen_pt extends CI_Controller {
 		$this->load->view('tampilan_gis', $isi);
 	}
 
-	public function lihat()
-	{
-		echo "lihat";
-	}
-
 	public function edit()
 	{
-		echo "edit";
+		$this->Model_keamanan->getkeamanan();
+		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['menu'] = "menu_admin";
+		$isi['konten'] = "konten_edit_pt";
+		$isi['breadcrumb0'] = "Data Master";
+		$isi['judul'] = "Edit PT / Home Industri";
+		$id_pt = $this->uri->segment(3);
+
+		$title_detail = $this->Model_data->data_pt($id_pt);
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_pt | Edit";
+			$isi['breadcrumb'] = "$nama->nama_pt";
+		}
+
+		$isi['data_pt'] = $this->Model_data->data_pt($id_pt);
+		$this->load->view('tampilan_dashboard_admin', $isi);
 	}
+
+	public function simpan_edit()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$id_pt							= $this->input->post('id_pt');
+		$nama								= $this->input->post('nama');
+		$owner							= $this->input->post('owner');
+		$no_telp						= $this->input->post('no_telp');
+		$web								= $this->input->post('web');
+		$email							= $this->input->post('email');
+		$sekretaris					= $this->input->post('sekretaris');
+		$bendahara					= $this->input->post('bendahara');
+		$humas							= $this->input->post('humas');
+		$tenaga_kerja				= $this->input->post('tenaga_kerja');
+		$alamat							= $this->input->post('alamat');
+		$luas_tanah					= $this->input->post('luas_tanah');
+		$luas_bangunan			= $this->input->post('luas_bangunan');
+		$tahun_berdiri			= $this->input->post('tahun_berdiri');
+		$this->Model_data->simpan_edit_pt($id_pt,$nama,$owner,$no_telp,$web,$email,$sekretaris,$bendahara,$humas,$tenaga_kerja,$alamat,
+																							$luas_tanah,$luas_bangunan,$tahun_berdiri);
+		$this->session->set_flashdata('info',
+				'<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Info</h4>
+						Data Berhasil Diubah
+					</div>');
+		redirect('manajemen_pt');
+	}
+
 
 	public function hapus()
 	{

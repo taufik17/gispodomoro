@@ -43,7 +43,52 @@ class Manajemen_tempat_ibadah extends CI_Controller {
 
 	public function edit()
 	{
-		echo "edit";
+		$this->Model_keamanan->getkeamanan();
+		$isi['data']		= $this->Model_data->dataadmin();
+		$isi['menu'] = "menu_admin";
+		$isi['konten'] = "konten_edit_tempat_ibadah";
+		$isi['breadcrumb0'] = "Data Master";
+		$isi['judul'] = "Edit Tempat Ibadah";
+		$id_ibadah = $this->uri->segment(3);
+
+		$title_detail = $this->Model_data->data_ibadah($id_ibadah);
+		foreach ($title_detail->result() as $nama ) {
+			$isi['title'] = " $nama->nama_bangunan | Edit";
+			$isi['breadcrumb'] = "$nama->nama_bangunan";
+		}
+
+		$isi['data_sekolah'] = $this->Model_data->data_ibadah($id_ibadah);
+		$this->load->view('tampilan_dashboard_admin', $isi);
+	}
+
+	public function simpan_edit()
+	{
+		$this->Model_keamanan->getkeamanan();
+		$id_ibadah					= $this->input->post('id_ibadah');
+		$nama								= $this->input->post('nama');
+		$ketua							= $this->input->post('ketua');
+		$sekretaris					= $this->input->post('sekretaris');
+		$bendahara					= $this->input->post('bendahara');
+		$takmir							= $this->input->post('takmir');
+		$humas							= $this->input->post('humas');
+		$seksi_phbi					= $this->input->post('seksi_phbi');
+		$seksi_pendidikan		= $this->input->post('seksi_pendidikan');
+		$seksi_sarpras			= $this->input->post('seksi_sarpras');
+		$seksi_pembangunan	= $this->input->post('seksi_pembangunan');
+		$alamat							= $this->input->post('alamat');
+		$luas_tanah					= $this->input->post('luas_tanah');
+		$status_tanah				= $this->input->post('status_tanah');
+		$luas_bangunan			= $this->input->post('luas_bangunan');
+		$tahun_berdiri			= $this->input->post('tahun_berdiri');
+		$this->Model_data->simpan_edit_tempat_ibadah($id_ibadah,$nama,$ketua,$sekretaris,$bendahara,$takmir,$humas,$seksi_phbi,$seksi_pendidikan,$seksi_sarpras,
+																							$seksi_pembangunan,$alamat,$luas_tanah,$status_tanah,$luas_bangunan,$tahun_berdiri);
+		$this->session->set_flashdata('info',
+				'<div class="alert alert-success alert-dismissible">
+						<button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+						<h4><i class="icon fa fa-check"></i> Info</h4>
+						Data Berhasil Diubah
+					</div>');
+		redirect('manajemen_tempat_ibadah');
 	}
 
 	public function hapus()

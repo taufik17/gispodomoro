@@ -87,122 +87,57 @@
 			</section>
 
 
+			<?php
+			foreach ($data_aset->result() as $i ) {
+			?>
+
 			<section class="col-lg-12 connectedSortable">
 				<div class="card card-info">
-              <div class="card-header">
-                <h3 class="card-title">
+							<div class="card-header">
+								<h3 class="card-title">
 									<i class="fas fa-book">&nbsp</i>
 									Data <?= $nama_aset; ?></h3>
-              </div>
-              <!-- /.card-header -->
+							</div>
+							<!-- /.card-header -->
 
 							<div class="card-body">
 								<table class="table table-striped table-bordered">
-  <tbody><tr>
-    <th width="400px">A. Gambaran Umum Aset</th>
-    <th></th>
-  </tr>
-  <tr>
-    <td>NPSN</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Nama Sekolah</td>
-    <td>Sekolah 5</td>
-  </tr>
-  <tr>
-    <td>Status Sekolah</td>
-    <td>Negri</td>
-  </tr>
-  <tr>
-    <td>Kurikulum</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Alamat Sekolah</td>
-    <td>kisaran</td>
-  </tr>
+									<tbody><tr>
+										<th width="400px">A. Gambaran Umum Aset</th>
+										<th></th>
+									</tr>
+									<tr>
+										<td>Nama</td>
+										<td><?= $i->nama_aset; ?></td>
+									</tr>
+									<tr>
+										<td>Ketua Pengurus</td>
+										<td><?= $i->ketua; ?></td>
+									</tr>
+									<tr>
+										<td>Alamat</td>
+										<td><?= $i->alamat; ?></td>
+									</tr>
+									<tr>
+										<td>Luas tanah</td>
+										<td><?= $i->luas_tanah; ?></td>
+									</tr>
+									<tr>
+										<td>Luas bangunan</td>
+										<td><?= $i->luas_bangunan; ?></td>
+									</tr>
 
-	<tr>
-    <td>No Telpon</td>
-    <td>082284848484</td>
-  </tr>
-	<tr>
-    <td>Web Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Email Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Siswa</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Kepala Sekolah</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Telpon Kepala Sekolah</td>
-    <td></td>
-  </tr>
+									<tr>
+										<td>Tahun Berdiri</td>
+										<td><?= $i->tahun_berdiri; ?></td>
+									</tr>
 
-  <tr>
-    <th>B. SDM Sekolah</th>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Jumlah Tenaga Kependidikan</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Jumlah Guru</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Guru Honorer</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Jumlah Guru PNS</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Staff</td>
-    <td></td>
-  </tr>
-
-  <tr>
-    <th>C. Keunggulan Sekolah</th>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Visi</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Misi</td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>Tagline</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Kekhasan</td>
-    <td></td>
-  </tr>
-	<tr>
-    <td>Program Unggulan</td>
-    <td></td>
-  </tr>
-
-</tbody></table>
+								</tbody></table>
 							</div>
-                <!-- /.card-body -->
-            </div>
+								<!-- /.card-body -->
+						</div>
 			</section>
+		<?php } ?>
 			<!-- right col -->
 		</div>
 		<!-- /.row (main row) -->

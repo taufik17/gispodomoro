@@ -27,6 +27,7 @@ class Gis_tempat_ibadah extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$id_ibadah = $this->uri->segment(3);
 		$title_detail = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
+		$isi['ibadah'] = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
 		foreach ($title_detail->result() as $nama ) {
 			$isi['title'] = " $nama->nama_bangunan | Pekon Podomoro";
 			$isi['judul'] = "$nama->nama_bangunan";
@@ -47,6 +48,7 @@ class Gis_tempat_ibadah extends CI_Controller {
 	{
 		$id_ibadah = $this->uri->segment(3);
 		$title_detail = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
+		$isi['ibadah'] = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
 		foreach ($title_detail->result() as $nama ) {
 			$isi['title'] = " $nama->nama_bangunan | Pekon Podomoro";
 			$isi['judul'] = "$nama->nama_bangunan";

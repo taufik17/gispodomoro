@@ -52,9 +52,21 @@ class Model_data extends CI_model {
 		return $data;
 	}
 
+	public function data_ibadah($id_ibadah)
+	{
+		$data = $this->db->query("SELECT * FROM ibadah WHERE id_ibadah = $id_ibadah");
+		return $data;
+	}
+
 	public function daftar_pt()
 	{
 		$data = $this->db->query("SELECT * FROM pt_home_industri");
+		return $data;
+	}
+
+	public function data_aset($id_aset)
+	{
+		$data = $this->db->query("SELECT * FROM aset_desa WHERE id_aset = $id_aset");
 		return $data;
 	}
 
@@ -138,6 +150,12 @@ class Model_data extends CI_model {
 		return $hasil;
 	}
 
+	public function data_pt($id_pt)
+	{
+		$hasil = $this->db->query("SELECT * FROM pt_home_industri WHERE id_pt = $id_pt");
+		return $hasil;
+	}
+
 	public function simpan_edit_sekolah_tpa($npsn,$nama_sekolah,$status_sekolah,$kurikulum,$alamat_sekolah,$no_telpon,$web,$email,$jumlah_siswa,$kepsek,$telpon_kepsek,
 																					$tendik,$jmlh_guru,$jmlh_honorer,$jmlh_pns,$staff,$visi,$misi,$tagline,$id_sekolah)
 	{
@@ -146,6 +164,34 @@ class Model_data extends CI_model {
 															`jumlah_siswa` = '$jumlah_siswa', `telp_kepsek` = '$telpon_kepsek', `jmlh_tendik` = '$tendik', `jmlh_guru` = '$jmlh_guru', `jmlh_guru_honor` = '$jmlh_honorer', `jmlh_guru_pns` = '$jmlh_pns',
 															`staff` = '$staff', `visi` = '$visi', `misi` = '$misi', `tagline` = '$tagline'
 															WHERE `sekolah_tpa`.`id_sekolah` = $id_sekolah ");
+		return $hasil;
+	}
+
+	public function simpan_edit_tempat_ibadah($id_ibadah,$nama,$ketua,$sekretaris,$bendahara,$takmir,$humas,$seksi_phbi,$seksi_pendidikan,$seksi_sarpras,
+																						$seksi_pembangunan,$alamat,$luas_tanah,$status_tanah,$luas_bangunan,$tahun_berdiri)
+	{
+		$hasil = $this->db->query("UPDATE `ibadah` SET `nama_bangunan` = '$nama', `ketua` = '$ketua', `takmir` = '$takmir', `sekretaris` = '$sekretaris',
+															`bendahara` = '$bendahara', `humas` = '$humas', `seksi_phbi` = '$seksi_phbi', `seksi_pendidikan` = '$seksi_pendidikan',
+															`seksi_sarpras` = '$seksi_sarpras',	`seksi_pembangunan` = '$seksi_pembangunan', `alamat` = '$alamat', `luas_tanah` = '$luas_tanah',
+															`status_tanah` = '$status_tanah', `luas_bangunan` = '$luas_bangunan',	`tahun_berdiri` = '$tahun_berdiri'
+															WHERE `ibadah`.`id_ibadah` = $id_ibadah ");
+		return $hasil;
+	}
+
+	public function simpan_edit_pt($id_pt,$nama,$owner,$no_telp,$web,$email,$sekretaris,$bendahara,$humas,$tenaga_kerja,$alamat,
+																						$luas_tanah,$luas_bangunan,$tahun_berdiri)
+	{
+		$hasil = $this->db->query("UPDATE `pt_home_industri` SET `nama_pt` = '$nama', `pemilik` = '$owner',	`no_telp` = '$no_telp', `web` = '$web', `email` = '$email',
+															`sekretaris` = '$sekretaris', `bendahara` = '$bendahara', `humas` = '$humas', `tenaga_kerja` = '$tenaga_kerja',
+															`alamat` = '$alamat', `luas_tanah` = '$luas_tanah', `luas_bangunan` = '$luas_bangunan', `tahun_berdiri` = '$tahun_berdiri'
+															WHERE `pt_home_industri`.`id_pt` = $id_pt ");
+		return $hasil;
+	}
+
+	public function simpan_edit_aset($id_aset,$nama,$ketua,$alamat,$luas_tanah,$luas_bangunan,$tahun_berdiri)
+	{
+		$hasil = $this->db->query("UPDATE `aset_desa` SET `nama_aset` = '$nama', `ketua` = '$ketua', `alamat` = '$alamat', `luas_tanah` = '$luas_tanah',
+															`luas_bangunan` = '$luas_bangunan', `tahun_berdiri` = '$tahun_berdiri' WHERE `aset_desa`.`id_aset` = $id_aset ");
 		return $hasil;
 	}
 }

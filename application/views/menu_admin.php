@@ -138,13 +138,13 @@
 					</a>
 				</li>
 
-				<li class="nav-item">
+				<!-- <li class="nav-item">
 					<a href="<?= base_url(); ?>dokumentasi"
 					<?=$this->uri->segment(1) == 'Dokumentasi' || $this->uri->segment(1) == 'dokumentasi' ? 'class="nav-link active"' : 'class="nav-link"'?>>
 						<i class="nav-icon fas fa-file"></i>
 						<p>Dokumentasi</p>
 					</a>
-				</li>
+				</li> -->
 
 				<li class="nav-item">
 					<a href="<?= base_url(); ?>about"

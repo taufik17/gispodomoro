@@ -36,6 +36,7 @@ class Gis_pt extends CI_Controller {
 			$isi['foto1'] = "$nama->foto";
 		}
 		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_pt WHERE id_pt = $id_pt");
+		$isi['data_pt'] = $this->db->query("SELECT * FROM pt_home_industri WHERE id_pt = $id_pt");
 		$isi['nama_pt'] = "$nama->nama_pt";
 		$isi['menu'] = "menu_admin";
 		$isi['konten'] = "detail_gis_pt";
@@ -55,6 +56,7 @@ class Gis_pt extends CI_Controller {
 			$isi['foto1'] = "$nama->foto";
 		}
 		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_pt WHERE id_pt = $id_pt");
+		$isi['data_pt'] = $this->db->query("SELECT * FROM pt_home_industri WHERE id_pt = $id_pt");
 		$isi['nama_pt'] = "$nama->nama_pt";
 		$isi['menu'] = "menu_publik";
 		$isi['konten'] = "detail_publik_gis_pt";

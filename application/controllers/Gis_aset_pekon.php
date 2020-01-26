@@ -27,6 +27,7 @@ class Gis_aset_pekon extends CI_Controller {
 		$isi['data']		= $this->Model_data->dataadmin();
 		$id_aset = $this->uri->segment(3);
 		$title_detail = $this->db->query("SELECT * FROM aset_desa WHERE id_aset = $id_aset");
+		$isi['data_aset'] = $this->db->query("SELECT * FROM aset_desa WHERE id_aset = $id_aset");
 		foreach ($title_detail->result() as $nama ) {
 			$isi['title'] = " $nama->nama_aset | Pekon Podomoro";
 			$isi['judul'] = "$nama->nama_aset";
@@ -55,6 +56,7 @@ class Gis_aset_pekon extends CI_Controller {
 			$isi['foto1'] = "$nama->foto";
 		}
 		$isi['foto'] = $this->db->query("SELECT * FROM tbl_foto_aset WHERE id_aset = $id_aset");
+		$isi['data_aset'] = $this->db->query("SELECT * FROM aset_desa WHERE id_aset = $id_aset");
 		$isi['nama_aset'] = "$nama->nama_aset";
 		$isi['menu'] = "menu_publik";
 		$isi['konten'] = "detail_publik_gis_aset";

@@ -8,6 +8,13 @@
 					</div>
 					<!-- /.card-header -->
 					<div class="card-body">
+						<?php
+						$info = $this->session->flashdata('info');
+						if(!empty($info))
+						{
+							echo $info;
+						}
+						?>
 						<a href="<?= base_url(); ?>manajemen_tempat_ibadah/tambah">
 							<button type="button" class="btn btn-success" style="margin-bottom: 20px">
 								<i class="fas fa-plus">&nbsp</i>Tambah Data</button>
@@ -34,7 +41,7 @@
 									<a  href="<?php echo base_url();?>gis_tempat_ibadah/detail/<?= $row->id_ibadah; ?>" class="btn btn-info btn-sm" target="_blank">
 									<i class="fas fa-eye"></i>
 									</a>
-									<a  href="<?php echo base_url();?>manajemen_tempat_ibadah/edit/<?= $row->id_ibadah; ?>" class="btn btn-warning btn-sm" target="_blank">
+									<a  href="<?php echo base_url();?>manajemen_tempat_ibadah/edit/<?= $row->id_ibadah; ?>" class="btn btn-warning btn-sm">
 									<i class="fas fa-edit"></i>
 								</a>
 									<a  href="<?php echo base_url();?>manajemen_tempat_ibadah/hapus/<?= $row->id_ibadah; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Ingin Menghapus Data ini.?')">
